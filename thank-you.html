@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You - Application Submitted | Amity Online University</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            padding-top: 80px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1001;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #002147;
+        }
+
+        .nav-logo img {
+            height: 45px;
+            width: auto;
+            margin-right: 12px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+            align-items: center;
+        }
+
+        .nav-menu li a {
+            text-decoration: none;
+            color: #002147;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu li a:hover {
+            color: #FFC107;
+        }
+
+        .nav-menu li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #FFC107;
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu li a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #002147;
+            cursor: pointer;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .mobile-menu li {
+            margin: 15px 0;
+        }
+
+        .mobile-menu a {
+            color: #002147;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            display: block;
+            padding: 10px 0;
+        }
+
+        /* Thank You Page Styles */
+        .thank-you-container {
+            max-width: 800px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            padding: 60px 50px;
+            text-align: center;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .success-icon {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            margin: 0 auto 30px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 20px rgba(40, 167, 69, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(40, 167, 69, 0);
+            }
+        }
+
+        .thank-you-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #002147;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .thank-you-subtitle {
+            font-size: 1.3rem;
+            color: #666;
+            margin-bottom: 40px;
+            line-height: 1.5;
+        }
+
+        .application-details {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 40px 0;
+            border-left: 4px solid #FFC107;
+        }
+
+        .application-id {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #002147;
+            margin-bottom: 10px;
+        }
+
+        .application-id-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #FFC107;
+            background: #002147;
+            padding: 10px 20px;
+            border-radius: 8px;
+            display: inline-block;
+            margin: 10px 0;
+            letter-spacing: 1px;
+        }
+
+        .next-steps {
+            text-align: left;
+            background: #e8f4f8;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 40px 0;
+        }
+
+        .next-steps h3 {
+            color: #002147;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .next-steps h3 i {
+            margin-right: 10px;
+            color: #FFC107;
+        }
+
+        .next-steps ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .next-steps li {
+            padding: 12px 0;
+            padding-left: 30px;
+            position: relative;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #444;
+        }
+
+        .next-steps li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #28a745;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .action-buttons {
+            margin-top: 50px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+            min-width: 180px;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: #FFC107;
+            color: #002147;
+            border: 2px solid #FFC107;
+        }
+
+        .btn-primary:hover {
+            background: #002147;
+            color: #FFC107;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #002147;
+            border: 2px solid #002147;
+        }
+
+        .btn-secondary:hover {
+            background: #002147;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .contact-info {
+            margin-top: 40px;
+            padding: 25px;
+            background: #fff9e6;
+            border-radius: 12px;
+            border: 1px solid #ffeeba;
+        }
+
+        .contact-info h4 {
+            color: #002147;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .contact-info p {
+            margin: 8px 0;
+            color: #666;
+        }
+
+        .contact-info a {
+            color: #FFC107;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .contact-info a:hover {
+            color: #002147;
+        }
+
+        /* Footer */
+        .footer {
+            background: white;
+            padding: 30px 0;
+            border-top: 1px solid #e9ecef;
+            margin-top: 40px;
+        }
+
+        .footer-content {
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .thank-you-container {
+                padding: 40px 25px;
+                margin: 20px 15px;
+                border-radius: 15px;
+            }
+
+            .thank-you-title {
+                font-size: 2rem;
+            }
+
+            .thank-you-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .success-icon {
+                width: 80px;
+                height: 80px;
+                font-size: 2.5rem;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .application-details {
+                padding: 20px;
+            }
+
+            .next-steps {
+                padding: 20px;
+                text-align: left;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding-top: 70px;
+            }
+
+            .thank-you-title {
+                font-size: 1.8rem;
+            }
+
+            .application-id-value {
+                font-size: 1.3rem;
+                padding: 8px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="assets/images/logo.png" alt="Amity Online University Logo" onerror="this.src='https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100&q=80'">
+                <span class="nav-logo-text">Amity Online University</span>
+            </a>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#programs">Programs</a></li>
+                <li><a href="index.html#admissions">Admissions</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <div class="mobile-menu" id="mobileMenu">
+            <ul>
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#programs">Programs</a></li>
+                <li><a href="index.html#admissions">Admissions</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="thank-you-container">
+            <div class="success-icon">
+                <i class="fas fa-check"></i>
+            </div>
+
+            <h1 class="thank-you-title">Thank You!</h1>
+            <p class="thank-you-subtitle">Your application has been submitted successfully</p>
+
+            <div class="application-details">
+                <div class="application-id">Your Application ID:</div>
+                <div class="application-id-value" id="applicationId">Loading...</div>
+                <p style="margin-top: 15px; color: #666; font-size: 0.95rem;">
+                    Please save this Application ID for your records
+                </p>
+            </div>
+
+            <div class="next-steps">
+                <h3><i class="fas fa-clock"></i>What happens next?</h3>
+                <ul>
+                    <li>Our admissions team will review your application within 24-48 hours</li>
+                    <li>You will receive a confirmation email at your registered email address</li>
+                    <li>An admissions counselor will contact you to discuss your program and next steps</li>
+                    <li>If selected, you'll receive detailed information about enrollment and course schedules</li>
+                </ul>
+            </div>
+
+            <div class="action-buttons">
+                <a href="index.html" class="btn btn-primary">
+                    <i class="fas fa-home" style="margin-right: 8px;"></i>
+                    Back to Home
+                </a>
+                <a href="index.html#programs" class="btn btn-secondary">
+                    <i class="fas fa-graduation-cap" style="margin-right: 8px;"></i>
+                    Browse Programs
+                </a>
+            </div>
+
+            <div class="contact-info">
+                <h4><i class="fas fa-phone" style="margin-right: 8px; color: #FFC107;"></i>Need Help?</h4>
+                <p><strong>Admissions Helpline:</strong> <a href="tel:+911234567890">+91 12345 67890</a></p>
+                <p><strong>Email:</strong> <a href="mailto:admissions@amityonline.com">admissions@amityonline.com</a></p>
+                <p><strong>Available:</strong> Monday to Friday, 9:00 AM to 6:00 PM</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 Amity Online University. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Get application ID from URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const applicationId = urlParams.get('id') || 'AMT' + Date.now().toString().slice(-6);
+        
+        // Display the application ID
+        document.getElementById('applicationId').textContent = applicationId;
+
+        // Mobile menu toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        if (mobileMenuToggle) {
+            mobileMenuToggle.addEventListener('click', function() {
+                mobileMenu.classList.toggle('active');
+                const icon = this.querySelector('i');
+                
+                if (mobileMenu.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (mobileMenu && mobileMenu.classList.contains('active') && 
+                !mobileMenu.contains(e.target) && 
+                !mobileMenuToggle.contains(e.target)) {
+                mobileMenu.classList.remove('active');
+                mobileMenuToggle.querySelector('i').classList.remove('fa-times');
+                mobileMenuToggle.querySelector('i').classList.add('fa-bars');
+            }
+        });
+
+        // Add confetti effect (optional enhancement)
+        function createConfetti() {
+            const colors = ['#FFC107', '#002147', '#28a745', '#007bff', '#dc3545'];
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.style.cssText = `
+                    position: fixed;
+                    width: 10px;
+                    height: 10px;
+                    background: ${colors[Math.floor(Math.random() * colors.length)]};
+                    left: ${Math.random() * 100}vw;
+                    top: -10px;
+                    z-index: 1000;
+                    animation: fall ${3 + Math.random() * 2}s linear forwards;
+                    border-radius: 50%;
+                `;
+                document.body.appendChild(confetti);
+                setTimeout(() => confetti.remove(), 5000);
+            }
+        }
+
+        // Add CSS for confetti animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fall {
+                to {
+                    transform: translateY(100vh) rotate(360deg);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Trigger confetti on page load
+        window.addEventListener('load', createConfetti);
+    </script>
+</body>
+</html>

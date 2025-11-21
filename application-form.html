@@ -592,6 +592,87 @@
             }
         }
 
+        /* Success notification popup */
+        .success-notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            padding: 20px 25px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(40, 167, 69, 0.3);
+            z-index: 10000;
+            transform: translateX(400px);
+            transition: transform 0.5s ease;
+            max-width: 350px;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .success-notification.show {
+            transform: translateX(0);
+        }
+
+        .success-notification .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .success-notification .close-btn:hover {
+            opacity: 1;
+        }
+
+        .success-notification .notification-icon {
+            font-size: 1.5rem;
+            margin-right: 12px;
+            animation: bounce 1s ease;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 53%, 80%, 100% {
+                transform: translate3d(0, 0, 0);
+            }
+            40%, 43% {
+                transform: translate3d(0, -10px, 0);
+            }
+            70% {
+                transform: translate3d(0, -5px, 0);
+            }
+            90% {
+                transform: translate3d(0, -2px, 0);
+            }
+        }
+
+        .success-notification .notification-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .success-notification .notification-message {
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+
+        /* Countdown timer */
+        .redirect-countdown {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 12px;
+            border-radius: 6px;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
         /* Add styles for form messages (success / error) */
         .form-message {
             padding: 20px;
@@ -609,6 +690,20 @@
             background: #f8d7da;
             color: #721c24;
             border: 1px solid #f5c6cb;
+        }
+
+        @media (max-width: 480px) {
+            .success-notification {
+                top: 10px;
+                right: 10px;
+                left: 10px;
+                max-width: none;
+                transform: translateY(-100px);
+            }
+            
+            .success-notification.show {
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
@@ -986,66 +1081,77 @@
 
             // Get form data
             const formData = new FormData(document.getElementById('applicationForm'));
+            
+            // Add timestamp and application ID to FormData
+            const applicationId = 'AMT' + Date.now().toString().slice(-6) + Math.floor(Math.random() * 1000).toString().padStart(3, '0');
+            formData.append('applicationId', applicationId);
+            formData.append('timestamp', new Date().toLocaleString());
+            formData.append('fullPhone', formData.get('countryCode') + formData.get('phoneNumber'));
 
             // Debug: Log form data
-            console.log('Form Data:');
+            console.log('Form Data being sent:');
             for (let [key, value] of formData.entries()) {
                 console.log(key + ':', value);
             }
 
-            // Submit to PHP backend
-            fetch('submit.php', {
+            // Replace with your Google Apps Script Web App URL
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbzHeZALb_JCI58cJIjKpH-moJcioAGsbR0PWrvT1UvbB8hAKRFisYFXmKBTJyrjFuCG9A/exec';
+            
+            // Send data to Google Sheets via Google Apps Script
+            fetch(scriptURL, {
                 method: 'POST',
-                body: formData,
-                headers: {
-                    'X-Requested-With': 'XMLHttpRequest'
-                }
+                body: formData // Send as FormData, not JSON
             })
             .then(response => {
                 console.log('Response status:', response.status);
-                return response.text(); // Get raw response first
-            })
-            .then(text => {
-                console.log('Raw response:', text);
-                try {
-                    return JSON.parse(text);
-                } catch (e) {
-                    throw new Error('Invalid JSON response: ' + text);
-                }
-            })
-            .then(data => {
-                console.log('Parsed data:', data);
+                console.log('Response:', response);
                 
-                if (data.success) {
-                    // Show success message
-                    successMessage.innerHTML = `
-                        <i class="fas fa-check-circle" style="margin-right: 10px;"></i>
-                        <strong>Thank you!</strong> Your application has been submitted successfully. 
-                        Your Application ID is: <strong>${data.applicationId}</strong>
-                        <br><br>Our admissions team will contact you within 24 hours.
-                    `;
-                    successMessage.style.display = 'block';
-                    successMessage.className = 'form-message success';
-                    document.getElementById('applicationForm').style.display = 'none';
-                    
-                    // Scroll to success message
-                    successMessage.scrollIntoView({ behavior: 'smooth' });
-                } else {
-                    // Handle errors
-                    let errorMessage = 'Submission failed:<br>';
-                    if (data.errors && Array.isArray(data.errors)) {
-                        errorMessage += '<ul><li>' + data.errors.join('</li><li>') + '</li></ul>';
-                    } else if (data.message) {
-                        errorMessage += data.message;
-                    }
-                    
-                    // Show error message
-                    showErrorMessage(errorMessage);
-                }
+                // Try to get the response text for debugging
+                return response.text();
             })
-            .catch(error => {
+            .then(responseText => {
+                console.log('Response text:', responseText);
+                
+                // Try to parse as JSON, but handle if it's not JSON
+                let responseData;
+                try {
+                    responseData = JSON.parse(responseText);
+                    console.log('Parsed response:', responseData);
+                } catch (e) {
+                    console.log('Response is not JSON:', responseText);
+                    responseData = { status: 'success', message: 'Submitted successfully' };
+                }
+                
+                // Check if the submission was successful
+                if (responseData.status === 'error') {
+                    throw new Error(responseData.message || 'Submission failed');
+                }
+                
+                // Show success notification
+                successMessage.innerHTML = `
+                    <i class="fas fa-check-circle" style="margin-right: 10px; color: #28a745;"></i>
+                    <strong>Success!</strong> Your application has been submitted successfully. 
+                    <br>Application ID: <strong>${applicationId}</strong>
+                    <br><br><i class="fas fa-spinner fa-spin" style="margin-right: 8px;"></i>Redirecting you to confirmation page...
+                `;
+                successMessage.style.display = 'block';
+                successMessage.className = 'form-message success';
+                document.getElementById('applicationForm').style.display = 'none';
+                
+                // Scroll to success message
+                successMessage.scrollIntoView({ behavior: 'smooth' });
+                
+                // Show success notification popup
+                showSuccessNotification(applicationId);
+                
+                // Redirect to thank you page after 3 seconds
+                setTimeout(() => {
+                    window.location.href = `thank-you.html?id=${applicationId}`;
+                }, 3000);
+            })
+            .catch((error) => {
                 console.error('Error:', error);
-                showErrorMessage('Network error: ' + error.message + '<br>Please check your internet connection and try again.');
+                showErrorMessage('Sorry, there was an error submitting your application. Please try again or contact support.');
             })
             .finally(() => {
                 // Reset button state
@@ -1074,6 +1180,69 @@
                     errorDiv.style.display = 'none';
                 }
             }, 10000);
+        }
+
+        function showSuccessNotification(applicationId) {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.className = 'success-notification';
+            notification.innerHTML = `
+                <button class="close-btn" onclick="closeNotification(this.parentElement)">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div style="display: flex; align-items: flex-start;">
+                    <i class="fas fa-check-circle notification-icon"></i>
+                    <div>
+                        <div class="notification-title">Application Submitted Successfully!</div>
+                        <div class="notification-message">
+                            Your Application ID: <strong>${applicationId}</strong>
+                        </div>
+                        <div class="redirect-countdown">
+                            <i class="fas fa-clock" style="margin-right: 5px;"></i>
+                            <span id="countdown">3</span> seconds until redirect
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // Add to page
+            document.body.appendChild(notification);
+            
+            // Show notification with animation
+            setTimeout(() => {
+                notification.classList.add('show');
+            }, 100);
+            
+            // Start countdown
+            let timeLeft = 3;
+            const countdownElement = notification.querySelector('#countdown');
+            
+            const countdownInterval = setInterval(() => {
+                timeLeft--;
+                if (countdownElement) {
+                    countdownElement.textContent = timeLeft;
+                }
+                
+                if (timeLeft <= 0) {
+                    clearInterval(countdownInterval);
+                }
+            }, 1000);
+            
+            // Auto-remove notification after 4 seconds
+            setTimeout(() => {
+                closeNotification(notification);
+            }, 4000);
+        }
+
+        function closeNotification(notification) {
+            if (notification) {
+                notification.classList.remove('show');
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.parentNode.removeChild(notification);
+                    }
+                }, 500);
+            }
         }
 
         // Auto-format name fields (capitalize first letter)
