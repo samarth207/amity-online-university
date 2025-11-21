@@ -1,38 +1,41 @@
-// Google Apps Script code to handle form submissions and save to Google Sheets
-// This code should be deployed as a Web App in Google Apps Script
-
 function doPost(e) {
+  // Ultra-safe error handling
   try {
-    // Log all received data for debugging
-    console.log('Full request object:', e);
-    if (e.postData) {
-      console.log('POST data:', e.postData);
-    }
-    console.log('Parameters:', e.parameter);
+    console.log('=== FORM SUBMISSION START ===');
+    console.log('Full event object:');
+    console.log(JSON.stringify(e, null, 2));
     
-    // Get the data from the request parameters (FormData comes through e.parameter)
+    // Get data safely - FormData comes through e.parameter
     const data = e.parameter || {};
     
-    // Log the extracted data
-    console.log('Extracted data:', data);
+    console.log('Extracted form data:');
+    console.log(JSON.stringify(data, null, 2));
     
-    // Validate that we have some data
-    if (!data.firstName && !data.lastName && !data.email) {
-      console.log('No form data found in request');
-      throw new Error('No valid form data received. Data keys: ' + Object.keys(data).join(', '));
+    // Validate we have actual form data
+    const hasFormData = data.firstName || data.email || Object.keys(data).length > 0;
+    
+    if (!hasFormData) {
+      throw new Error('No form data received. Keys found: ' + Object.keys(data).join(', '));
     }
     
-    // Open the Google Sheet by ID
-    const SHEET_ID = '1ZS4jsxL37Lm8En8Nj-LoLvyjJEX2ioqn8eDzitoxNoo'; // Your actual Google Sheet ID
+    // Your Google Sheet ID
+    const SHEET_ID = '1ZS4jsxL37Lm8En8Nj-LoLvyjJEX2ioqn8eDzitoxNoo';
+    
+    console.log('Opening Google Sheet with ID:', SHEET_ID);
+    
+    // Open the sheet
     const spreadsheet = SpreadsheetApp.openById(SHEET_ID);
     const sheet = spreadsheet.getActiveSheet();
     
-    // Check if this is the first row (add headers if needed)
+    console.log('Sheet opened successfully. Current rows:', sheet.getLastRow());
+    
+    // Add headers if this is the first submission
     if (sheet.getLastRow() === 0) {
+      console.log('Adding headers to empty sheet...');
       const headers = [
         'Timestamp',
         'Application ID',
-        'First Name',
+        'First Name', 
         'Last Name',
         'Email',
         'Country Code',
@@ -42,28 +45,19 @@ function doPost(e) {
         'State'
       ];
       
-      // Add headers
       sheet.getRange(1, 1, 1, headers.length).setValues([headers]);
       
-      // Format headers
+      // Style the headers
       const headerRange = sheet.getRange(1, 1, 1, headers.length);
       headerRange.setFontWeight('bold');
       headerRange.setBackground('#4285f4');
       headerRange.setFontColor('white');
       
-      console.log('Headers added to sheet');
+      console.log('Headers added successfully');
     }
     
-    // Prepare the row data with fallbacks
-    const timestamp = data.timestamp || new Date().toLocaleString('en-US', {
-      timeZone: 'Asia/Kolkata',
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit',
-      hour: '2-digit',
-      minute: '2-digit',
-      second: '2-digit'
-    });
+    // Prepare the data row
+    const timestamp = new Date().toLocaleString('en-US', { timeZone: 'Asia/Kolkata' });
     
     const rowData = [
       timestamp,
@@ -73,107 +67,66 @@ function doPost(e) {
       data.email || '',
       data.countryCode || '',
       data.phoneNumber || '',
-      data.fullPhone || '',
+      data.fullPhone || (data.countryCode + data.phoneNumber),
       data.course || '',
       data.state || ''
     ];
     
-    // Log the row data that will be added
-    console.log('Row data to be added:', rowData);
+    console.log('Prepared row data:');
+    console.log(JSON.stringify(rowData, null, 2));
     
-    // Add the data to the next available row
+    // Add the data to the sheet
     sheet.appendRow(rowData);
     
-    // Auto-resize columns for better readability
+    console.log('Data added to sheet successfully!');
+    
+    // Auto-resize columns
     sheet.autoResizeColumns(1, rowData.length);
     
-    console.log('Data successfully added to sheet');
+    console.log('=== FORM SUBMISSION SUCCESS ===');
     
     // Return success response
-    return ContentService
-      .createTextOutput(JSON.stringify({
-        status: 'success',
-        message: 'Data saved successfully',
-        applicationId: data.applicationId,
-        timestamp: timestamp
-      }))
-      .setMimeType(ContentService.MimeType.JSON);
-      
-  } catch (error) {
-    console.error('Error in doPost:', error);
+    const response = {
+      status: 'success',
+      message: 'Application submitted successfully!',
+      applicationId: data.applicationId,
+      timestamp: timestamp
+    };
     
-    // Return error response
     return ContentService
-      .createTextOutput(JSON.stringify({
-        status: 'error',
-        message: 'Failed to save data: ' + error.toString(),
-        details: error.stack
-      }))
+      .createTextOutput(JSON.stringify(response))
+      .setMimeType(ContentService.MimeType.JSON);
+    
+  } catch (error) {
+    console.error('=== FORM SUBMISSION ERROR ===');
+    console.error('Error message:', error.message);
+    console.error('Error stack:', error.stack);
+    console.error('================================');
+    
+    // Return error response with details
+    const errorResponse = {
+      status: 'error',
+      message: error.message,
+      details: error.stack,
+      timestamp: new Date().toLocaleString()
+    };
+    
+    return ContentService
+      .createTextOutput(JSON.stringify(errorResponse))
       .setMimeType(ContentService.MimeType.JSON);
   }
 }
 
-// Optional: Function to send email notification when a new application is submitted
-function sendEmailNotification(data) {
-  try {
-    const email = 'your-email@domain.com'; // Replace with your email
-    const subject = `New Application Received - ${data.applicationId}`;
-    
-    const body = `
-New application received:
-
-Application ID: ${data.applicationId}
-Name: ${data.firstName} ${data.lastName}
-Email: ${data.email}
-Phone: ${data.fullPhone}
-Course: ${data.course}
-State: ${data.state}
-Submitted: ${data.timestamp}
-
-Please review and contact the applicant within 24 hours.
-`;
-    
-    GmailApp.sendEmail(email, subject, body);
-  } catch (error) {
-    console.error('Email notification failed:', error);
-  }
-}
-
-// Optional: Function to get all submissions (for admin dashboard)
-function getAllSubmissions() {
-  try {
-    const SHEET_ID = '1ZS4jsxL37Lm8En8Nj-LoLvyjJEX2ioqn8eDzitoxNoo'; // Your actual Google Sheet ID
-    const sheet = SpreadsheetApp.openById(SHEET_ID).getActiveSheet();
-    
-    const data = sheet.getDataRange().getValues();
-    
-    return ContentService
-      .createTextOutput(JSON.stringify({
-        status: 'success',
-        data: data
-      }))
-      .setMimeType(ContentService.MimeType.JSON);
-      
-  } catch (error) {
-    return ContentService
-      .createTextOutput(JSON.stringify({
-        status: 'error',
-        message: error.toString()
-      }))
-      .setMimeType(ContentService.MimeType.JSON);
-  }
-}
-
-// Test function to verify the setup
-function testFunction() {
-  console.log('Test function started');
+// Test function - run this first to verify everything works
+function testFormSubmission() {
+  console.log('Starting test...');
   
   const testData = {
+    applicationId: 'TEST_' + Date.now(),
     timestamp: new Date().toLocaleString(),
-    applicationId: 'TEST001',
-    firstName: 'Test',
-    lastName: 'User',
-    email: 'test@example.com',
+    firstName: 'John',
+    lastName: 'Doe', 
+    email: 'john.doe@test.com',
     countryCode: '+91',
     phoneNumber: '9876543210',
     fullPhone: '+919876543210',
@@ -187,12 +140,10 @@ function testFunction() {
   
   console.log('Test data:', testData);
   
-  try {
-    const result = doPost(mockEvent);
-    console.log('Test result:', result.getContent());
-    return 'Test completed successfully';
-  } catch (error) {
-    console.error('Test failed:', error);
-    return 'Test failed: ' + error.toString();
-  }
+  const result = doPost(mockEvent);
+  const resultText = result.getContent();
+  
+  console.log('Test result:', resultText);
+  
+  return resultText;
 }
