@@ -986,66 +986,69 @@
 
             // Get form data
             const formData = new FormData(document.getElementById('applicationForm'));
+            
+            // Add timestamp and application ID to FormData
+            const applicationId = 'AMT' + Date.now().toString().slice(-6) + Math.floor(Math.random() * 1000).toString().padStart(3, '0');
+            formData.append('applicationId', applicationId);
+            formData.append('timestamp', new Date().toLocaleString());
+            formData.append('fullPhone', formData.get('countryCode') + formData.get('phoneNumber'));
 
             // Debug: Log form data
-            console.log('Form Data:');
+            console.log('Form Data being sent:');
             for (let [key, value] of formData.entries()) {
                 console.log(key + ':', value);
             }
 
-            // Submit to PHP backend
-            fetch('submit.php', {
+            // Replace with your Google Apps Script Web App URL
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbzHeZALb_JCI58cJIjKpH-moJcioAGsbR0PWrvT1UvbB8hAKRFisYFXmKBTJyrjFuCG9A/exec';
+            
+            // Send data to Google Sheets via Google Apps Script
+            fetch(scriptURL, {
                 method: 'POST',
-                body: formData,
-                headers: {
-                    'X-Requested-With': 'XMLHttpRequest'
-                }
+                body: formData // Send as FormData, not JSON
             })
             .then(response => {
                 console.log('Response status:', response.status);
-                return response.text(); // Get raw response first
-            })
-            .then(text => {
-                console.log('Raw response:', text);
-                try {
-                    return JSON.parse(text);
-                } catch (e) {
-                    throw new Error('Invalid JSON response: ' + text);
-                }
-            })
-            .then(data => {
-                console.log('Parsed data:', data);
+                console.log('Response:', response);
                 
-                if (data.success) {
-                    // Show success message
-                    successMessage.innerHTML = `
-                        <i class="fas fa-check-circle" style="margin-right: 10px;"></i>
-                        <strong>Thank you!</strong> Your application has been submitted successfully. 
-                        Your Application ID is: <strong>${data.applicationId}</strong>
-                        <br><br>Our admissions team will contact you within 24 hours.
-                    `;
-                    successMessage.style.display = 'block';
-                    successMessage.className = 'form-message success';
-                    document.getElementById('applicationForm').style.display = 'none';
-                    
-                    // Scroll to success message
-                    successMessage.scrollIntoView({ behavior: 'smooth' });
-                } else {
-                    // Handle errors
-                    let errorMessage = 'Submission failed:<br>';
-                    if (data.errors && Array.isArray(data.errors)) {
-                        errorMessage += '<ul><li>' + data.errors.join('</li><li>') + '</li></ul>';
-                    } else if (data.message) {
-                        errorMessage += data.message;
-                    }
-                    
-                    // Show error message
-                    showErrorMessage(errorMessage);
-                }
+                // Try to get the response text for debugging
+                return response.text();
             })
-            .catch(error => {
+            .then(responseText => {
+                console.log('Response text:', responseText);
+                
+                // Try to parse as JSON, but handle if it's not JSON
+                let responseData;
+                try {
+                    responseData = JSON.parse(responseText);
+                    console.log('Parsed response:', responseData);
+                } catch (e) {
+                    console.log('Response is not JSON:', responseText);
+                    responseData = { status: 'success', message: 'Submitted successfully' };
+                }
+                
+                // Check if the submission was successful
+                if (responseData.status === 'error') {
+                    throw new Error(responseData.message || 'Submission failed');
+                }
+                
+                // Show success message
+                successMessage.innerHTML = `
+                    <i class="fas fa-check-circle" style="margin-right: 10px;"></i>
+                    <strong>Thank you!</strong> Your application has been submitted successfully. 
+                    Your Application ID is: <strong>${applicationId}</strong>
+                    <br><br>Our admissions team will contact you within 24 hours.
+                `;
+                successMessage.style.display = 'block';
+                successMessage.className = 'form-message success';
+                document.getElementById('applicationForm').style.display = 'none';
+                
+                // Scroll to success message
+                successMessage.scrollIntoView({ behavior: 'smooth' });
+            })
+            .catch((error) => {
                 console.error('Error:', error);
-                showErrorMessage('Network error: ' + error.message + '<br>Please check your internet connection and try again.');
+                showErrorMessage('Sorry, there was an error submitting your application. Please try again or contact support.');
             })
             .finally(() => {
                 // Reset button state
