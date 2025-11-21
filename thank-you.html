@@ -507,9 +507,8 @@
 
             <div class="contact-info">
                 <h4><i class="fas fa-phone" style="margin-right: 8px; color: #FFC107;"></i>Need Help?</h4>
-                <p><strong>Admissions Helpline:</strong> <a href="tel:+911234567890">+91 12345 67890</a></p>
-                <p><strong>Email:</strong> <a href="mailto:admissions@amityonline.com">admissions@amityonline.com</a></p>
-                <p><strong>Available:</strong> Monday to Friday, 9:00 AM to 6:00 PM</p>
+                <p><strong>Admissions Helpline:</strong> <a href="tel:+919266530366">+91 92665 30366</a></p>
+                <p><strong>Available:</strong> Monday to Friday, 9:00 AM to 7:00 PM</p>
             </div>
         </div>
     </div>
@@ -524,12 +523,144 @@
     </footer>
 
     <script>
-        // Get application ID from URL parameter
+        // Security: Prevent direct URL access
+        function checkAuthorizedAccess() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const applicationId = urlParams.get('id');
+            const referrer = document.referrer;
+            const timestamp = urlParams.get('t');
+            
+            // Check session storage for form submission flag
+            const formSubmitted = sessionStorage.getItem('formSubmitted');
+            const submissionTime = sessionStorage.getItem('submissionTime');
+            const sessionAppId = sessionStorage.getItem('applicationId');
+            
+            // Check if user came from the form submission
+            const validReferrer = referrer.includes('application-form.html') || referrer.includes(window.location.host);
+            
+            // Check if application ID exists and follows correct format
+            const validApplicationId = applicationId && applicationId.match(/^AMT\d{9}$/);
+            
+            // Check if timestamp is recent (within last 10 minutes)
+            const validTimestamp = timestamp && (Date.now() - parseInt(timestamp)) < 600000;
+            
+            // Check session storage validity
+            const validSession = formSubmitted === 'true' && 
+                                submissionTime && 
+                                (Date.now() - parseInt(submissionTime)) < 600000 &&
+                                sessionAppId === applicationId;
+            
+            // If any security check fails, redirect to application form
+            if (!validReferrer || !validApplicationId || !validTimestamp || !validSession) {
+                console.log('Unauthorized access detected, redirecting...');
+                
+                // Clear any invalid session data
+                sessionStorage.removeItem('formSubmitted');
+                sessionStorage.removeItem('submissionTime');
+                sessionStorage.removeItem('applicationId');
+                
+                // Show warning message briefly before redirect
+                document.body.innerHTML = `
+                    <div style="
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        height: 100vh;
+                        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+                        font-family: 'Inter', sans-serif;
+                        text-align: center;
+                        padding: 20px;
+                    ">
+                        <div style="
+                            background: white;
+                            padding: 40px;
+                            border-radius: 12px;
+                            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                            max-width: 500px;
+                        ">
+                            <i class="fas fa-exclamation-triangle" style="
+                                font-size: 3rem;
+                                color: #FFC107;
+                                margin-bottom: 20px;
+                            "></i>
+                            <h2 style="color: #002147; margin-bottom: 15px;">Access Restricted</h2>
+                            <p style="color: #666; margin-bottom: 25px; line-height: 1.5;">
+                                This page can only be accessed after submitting an application form.
+                                You will be redirected to the application form.
+                            </p>
+                            <div style="
+                                background: #f8f9fa;
+                                padding: 15px;
+                                border-radius: 8px;
+                                margin-bottom: 20px;
+                                color: #666;
+                                font-size: 0.9rem;
+                            ">
+                                <i class="fas fa-info-circle" style="margin-right: 8px; color: #007bff;"></i>
+                                Redirecting in <span id="redirectTimer">3</span> seconds...
+                            </div>
+                            <a href="application-form.html" style="
+                                background: #FFC107;
+                                color: #002147;
+                                padding: 12px 25px;
+                                text-decoration: none;
+                                border-radius: 6px;
+                                font-weight: 600;
+                                display: inline-block;
+                                transition: all 0.3s ease;
+                            ">Apply Now</a>
+                        </div>
+                    </div>
+                `;
+                
+                // Countdown timer for redirect
+                let countdown = 3;
+                const timerElement = document.getElementById('redirectTimer');
+                
+                const redirectInterval = setInterval(() => {
+                    countdown--;
+                    if (timerElement) {
+                        timerElement.textContent = countdown;
+                    }
+                    
+                    if (countdown <= 0) {
+                        clearInterval(redirectInterval);
+                        window.location.href = 'application-form.html';
+                    }
+                }, 1000);
+                
+                return false;
+            }
+            
+            return true;
+        }
+
+        // Run security check immediately
+        if (!checkAuthorizedAccess()) {
+            // Stop execution if unauthorized
+            throw new Error('Unauthorized access');
+        }
+
+        // Get application ID from URL parameter (only if authorized)
         const urlParams = new URLSearchParams(window.location.search);
         const applicationId = urlParams.get('id') || 'AMT' + Date.now().toString().slice(-6);
         
         // Display the application ID
         document.getElementById('applicationId').textContent = applicationId;
+
+        // Clean up session after successful access (prevent reuse)
+        setTimeout(() => {
+            sessionStorage.removeItem('formSubmitted');
+            sessionStorage.removeItem('submissionTime');
+            sessionStorage.removeItem('applicationId');
+        }, 5000); // Clear after 5 seconds
+
+        // Prevent page refresh/back button abuse
+        window.addEventListener('beforeunload', () => {
+            sessionStorage.removeItem('formSubmitted');
+            sessionStorage.removeItem('submissionTime');
+            sessionStorage.removeItem('applicationId');
+        });
 
         // Mobile menu toggle
         const mobileMenuToggle = document.getElementById('mobileMenuToggle');
