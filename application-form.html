@@ -1144,9 +1144,15 @@
                 // Show success notification popup
                 showSuccessNotification(applicationId);
                 
+                // Set session flag for authorized access to thank you page
+                sessionStorage.setItem('formSubmitted', 'true');
+                sessionStorage.setItem('submissionTime', Date.now().toString());
+                sessionStorage.setItem('applicationId', applicationId);
+                
                 // Redirect to thank you page after 3 seconds
                 setTimeout(() => {
-                    window.location.href = `thank-you.html?id=${applicationId}`;
+                    const timestamp = Date.now();
+                    window.location.href = `thank-you.html?id=${applicationId}&t=${timestamp}`;
                 }, 3000);
             })
             .catch((error) => {
