@@ -463,24 +463,29 @@
 
             .form-grid {
                 grid-template-columns: 1fr;
-                gap: 25px;
+                gap: 18px;
             }
 
             .form-content {
-                padding: 30px 25px;
+                padding: 25px 20px;
             }
 
             .form-header {
-                padding: 30px 25px;
+                padding: 25px 20px;
             }
 
             .form-header h1 {
-                font-size: 1.9rem;
+                font-size: 1.75rem;
+            }
+
+            .form-header p {
+                font-size: 1rem;
+                margin-top: 5px;
             }
 
             .phone-group {
                 flex-direction: column;
-                gap: 15px;
+                gap: 12px;
             }
 
             .country-code {
@@ -496,6 +501,13 @@
                 padding: 18px;
                 font-size: 1.1rem;
             }
+
+            .form-note {
+                padding: 18px;
+                font-size: 0.9rem;
+                margin-top: 20px;
+                line-height: 1.5;
+            }
         }
 
         @media (max-width: 480px) {
@@ -508,7 +520,13 @@
             }
 
             .form-header h1 {
-                font-size: 1.7rem;
+                font-size: 1.5rem;
+                line-height: 1.3;
+                margin-bottom: 6px;
+            }
+
+            .form-header p {
+                font-size: 0.95rem;
             }
 
             .nav-container {
@@ -521,34 +539,40 @@
             }
 
             .form-content {
-                padding: 25px 20px;
+                padding: 20px 15px;
             }
 
             .form-header {
-                padding: 25px 20px;
+                padding: 20px 15px;
             }
 
             .form-group input,
             .form-group select {
-                padding: 16px;
+                padding: 14px;
                 font-size: 16px; /* Prevents zoom on iOS */
-                min-height: 52px;
+                min-height: 50px;
                 border-radius: 8px;
             }
 
+            .form-group label {
+                margin-bottom: 6px;
+                font-size: 0.9rem;
+            }
+
             .submit-btn {
-                padding: 18px;
-                font-size: 1.1rem;
-                min-height: 56px;
+                padding: 16px;
+                font-size: 1.05rem;
+                min-height: 54px;
+                margin-top: 15px;
             }
 
             .phone-group {
-                gap: 12px;
+                gap: 10px;
             }
 
             .form-grid {
-                gap: 20px;
-               line-height: 1.6;
+                gap: 15px;
+                margin-bottom: 20px;
             }
 
             /* Mobile-specific improvements */
@@ -564,25 +588,30 @@
                 border-bottom: none;
             }
 
-            .form-header h1 {
-                font-size: 1.6rem;
-                line-height: 1.3;
-            }
-
-            .form-header p {
-                font-size: 1rem;
-            }
-
             /* Better error message visibility */
             .error-message {
-                font-size: 0.9rem;
-                margin-top: 6px;
+                font-size: 0.85rem;
+                margin-top: 5px;
             }
 
-            /* Improved label spacing */
-            .form-group label {
-                margin-bottom: 8px;
+            /* Form note optimization for mobile */
+            .form-note {
+                padding: 15px;
+                font-size: 0.85rem;
+                margin-top: 15px;
+                line-height: 1.5;
+                border-left-width: 3px;
+            }
+
+            .form-note strong {
+                font-size: 0.9rem;
+            }
+
+            /* Success message optimization */
+            .form-message {
+                padding: 15px;
                 font-size: 0.95rem;
+                margin: 15px 0;
             }
         }
 
@@ -935,7 +964,7 @@
                     <a href="#contact">Contact Us</a>
                 </div>
                 <div class="copyright">
-                    <p>&copy; 2024 Amity Online University. All rights reserved.</p>
+                    <p>&copy; 2025 Amity Online University. All rights reserved.</p>
                 </div>
             </div>
         </div>

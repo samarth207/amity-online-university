@@ -705,6 +705,24 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
         }
 
+        .step-number {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            width: 28px;
+            height: 28px;
+            background: #002147;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: 700;
+            border: 3px solid white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
         .step-title {
             font-size: 1.1rem;
             font-weight: 700;
@@ -983,18 +1001,31 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
+            body {
+                font-size: 16px;
+            }
+
+            .container {
+                padding: 0 20px;
+            }
+
+            .section {
+                padding: 50px 0;
+            }
+
             .nav-menu {
                 display: none;
             }
 
             .mobile-menu-toggle {
                 display: block;
-                padding: 8px;
-                min-width: 44px;
-                min-height: 44px;
+                padding: 10px;
+                min-width: 48px;
+                min-height: 48px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                font-size: 1.3rem;
             }
 
             .nav-logo-text {
@@ -1003,11 +1034,11 @@
 
             .nav-logo img {
                 margin-right: 0;
-                height: 40px;
+                height: 42px;
             }
 
             .nav-container {
-                padding: 10px 15px;
+                padding: 12px 20px;
             }
 
             .hero-content {
@@ -1022,7 +1053,7 @@
             }
 
             .hero-text h1 {
-                font-size: 2.2rem;
+                font-size: 2rem;
                 line-height: 1.3;
                 margin-bottom: 15px;
             }
@@ -1030,6 +1061,7 @@
             .hero-text p {
                 font-size: 1.1rem;
                 margin-bottom: 25px;
+                line-height: 1.5;
             }
 
             .hero-buttons {
@@ -1040,48 +1072,87 @@
 
             .btn {
                 width: 100%;
-                max-width: 280px;
-                min-height: 50px;
-                font-size: 1rem;
+                max-width: 100%;
+                min-height: 54px;
+                font-size: 1.05rem;
+                padding: 15px 20px;
+                font-weight: 700;
             }
 
             .certificate-content {
                 grid-template-columns: 1fr;
+                gap: 30px;
             }
 
             .contact-content {
                 grid-template-columns: 1fr;
                 text-align: center;
+                gap: 30px;
             }
 
             .contact-image img {
-                max-width: 280px;
-                height: 250px;
+                max-width: 100%;
+                height: auto;
             }
 
             .programs-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
             }
 
             .features-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 18px;
             }
 
             .accreditation-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 18px;
             }
 
             .reviews-grid {
                 grid-template-columns: 1fr;
+                gap: 25px;
             }
 
             .process-timeline {
-                flex-direction: column;
-                gap: 20px;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px 20px;
             }
 
             .process-timeline::before {
                 display: none;
+            }
+
+            .process-step {
+                text-align: center;
+            }
+
+            .step-icon {
+                width: 70px;
+                height: 70px;
+                font-size: 1.8rem;
+                margin: 0 auto 15px;
+                border-width: 5px;
+            }
+
+            .step-number {
+                width: 26px;
+                height: 26px;
+                font-size: 0.85rem;
+                top: -6px;
+                right: -6px;
+            }
+
+            .step-title {
+                font-size: 1rem;
+                margin-bottom: 8px;
+            }
+
+            .step-description {
+                font-size: 0.85rem;
+                line-height: 1.4;
             }
 
             .partners-slider {
@@ -1089,21 +1160,34 @@
             }
 
             .program-tabs {
-                flex-direction: column;
-                align-items: center;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+                width: 100%;
+            }
+
+            .tab-btn {
+                flex: none;
+                min-width: auto;
+                width: 100%;
+                min-height: 48px;
+                padding: 12px 12px;
+                font-size: 0.9rem;
+                white-space: nowrap;
             }
 
             .contact-float {
                 top: 120px;
                 right: 15px;
-                gap: 10px;
+                gap: 12px;
             }
 
             .contact-btn {
-                padding: 12px 16px;
-                border-radius: 25px;
+                padding: 14px 18px;
+                border-radius: 28px;
                 font-size: 0.9rem;
-                min-height: 48px;
+                min-height: 54px;
+                min-width: 54px;
             }
 
             .contact-btn span {
@@ -1111,58 +1195,100 @@
             }
 
             .contact-btn i {
-                font-size: 1.2rem;
+                font-size: 1.4rem;
             }
 
             .hero-image img {
-                height: 300px;
+                height: auto;
+                max-height: 300px;
+                width: 100%;
+                object-fit: cover;
             }
 
             .hero-usps {
                 gap: 10px;
-                margin-top: 20px;
+                margin-top: 25px;
                 justify-content: center;
                 grid-column: 1;
                 padding: 0 10px;
+                flex-wrap: wrap;
             }
 
             .usp-item {
-                font-size: 0.8rem;
-                padding: 8px 12px;
+                font-size: 0.85rem;
+                padding: 10px 14px;
                 white-space: normal;
                 text-align: center;
-                line-height: 1.3;
-                flex: 1 1 auto;
+                line-height: 1.4;
+                flex: 1 1 100%;
                 min-width: 0;
+            }
+
+            .program-card {
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            }
+
+            .program-content {
+                padding: 20px 15px;
+            }
+
+            .program-title {
+                font-size: 1.1rem;
+                line-height: 1.3;
+            }
+
+            .feature-card,
+            .accreditation-card {
+                padding: 25px 18px;
+            }
+
+            .feature-card h3 {
+                font-size: 1rem;
+                line-height: 1.3;
+            }
+
+            .feature-card i {
+                font-size: 2.2rem;
+            }
+
+            .review-card {
+                padding: 25px 20px;
+            }
+
+            .mobile-menu a {
+                padding: 16px 0;
+                font-size: 1.05rem;
+                border-bottom: 1px solid #f0f0f0;
+            }
+
+            .mobile-menu a:last-child {
+                border-bottom: none;
+            }
+
+            h2 {
+                font-size: 1.9rem;
+                line-height: 1.3;
+                margin-bottom: 25px;
+            }
+
+            .certificate-image img {
+                width: 100%;
+                height: auto;
+            }
+
+            .benefits-list li {
+                font-size: 0.95rem;
+                padding: 10px 0;
             }
         }
 
         @media (max-width: 480px) {
+            body {
+                font-size: 15px;
+            }
+
             .container {
-                padding: 0 15px;
-            }
-
-            .section {
-                padding: 50px 0;
-            }
-
-            .hero {
-                padding: 60px 0;
-            }
-
-            .hero-text h1 {
-                font-size: 2rem;
-            }
-
-            .university-section h2,
-            .why-choose h2,
-            .programs-section h2,
-            .admission-process h2,
-            .partners-section h2,
-            .reviews-section h2 {
-                font-size: 1.8rem;
-                line-height: 1.3;
-                margin-bottom: 30px;
+                padding: 0 16px;
             }
 
             .section {
@@ -1170,7 +1296,29 @@
             }
 
             .hero {
-                padding: 40px 0 60px;
+                padding: 40px 0 50px;
+            }
+
+            .hero-text h1 {
+                font-size: 1.75rem;
+                line-height: 1.3;
+            }
+
+            .hero-text p {
+                font-size: 1rem;
+            }
+
+            .university-section h2,
+            .why-choose h2,
+            .programs-section h2,
+            .admission-process h2,
+            .partners-section h2,
+            .reviews-section h2,
+            .certificate-section h2,
+            .contact-section h2 {
+                font-size: 1.65rem;
+                line-height: 1.3;
+                margin-bottom: 25px;
             }
 
             .program-card {
@@ -1181,11 +1329,11 @@
             .accreditation-card,
             .review-card {
                 margin-bottom: 20px;
-                padding: 25px 20px;
+                padding: 25px 18px;
             }
 
             .nav-container {
-                padding: 12px 15px;
+                padding: 10px 16px;
             }
 
             body {
@@ -1193,17 +1341,20 @@
             }
 
             .contact-image img {
-                max-width: 250px;
-                height: 220px;
+                max-width: 100%;
+                height: auto;
             }
 
             .hero-image img {
-                height: 250px;
+                height: auto;
+                max-height: 250px;
+                width: 100%;
+                object-fit: cover;
             }
 
-            /* Mobile-specific improvements */
             .mobile-menu a {
                 padding: 15px 0;
+                font-size: 1rem;
                 border-bottom: 1px solid #f0f0f0;
             }
 
@@ -1211,47 +1362,193 @@
                 border-bottom: none;
             }
 
-            /* Better touch targets */
-            .tab-btn {
-                min-height: 44px;
-                padding: 12px 20px;
-                margin: 5px;
+            .program-tabs {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+                width: 100%;
             }
 
-            /* Improved readability */
+            .tab-btn {
+                flex: none;
+                min-width: auto;
+                width: 100%;
+                min-height: 46px;
+                padding: 10px 8px;
+                margin: 0;
+                font-size: 0.85rem;
+                white-space: nowrap;
+            }
+
+            .programs-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+
+            .accreditation-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+
             .program-content {
-                padding: 20px;
+                padding: 18px 12px;
             }
 
             .program-title {
-                font-size: 1.2rem;
-                line-height: 1.4;
+                font-size: 1rem;
+                line-height: 1.3;
             }
 
-            /* Better spacing for USP items */
+            .program-details p {
+                font-size: 0.85rem;
+                margin: 6px 0;
+            }
+
+            .specialization-badge {
+                font-size: 0.75rem;
+                padding: 5px 10px;
+            }
+
             .hero-usps {
                 justify-content: center;
                 text-align: center;
                 gap: 8px;
                 padding: 0 5px;
+                margin-top: 20px;
             }
 
             .usp-item {
                 text-align: center;
                 white-space: normal;
                 overflow: visible;
-                text-overflow: none;
                 max-width: 100%;
-                font-size: 0.75rem;
-                padding: 6px 10px;
-                line-height: 1.2;
-                flex: 1 1 calc(50% - 4px);
+                font-size: 0.8rem;
+                padding: 8px 12px;
+                line-height: 1.3;
+                flex: 1 1 100%;
             }
 
-            /* Contact float adjustments */
             .contact-float {
                 right: 10px;
-                top: 110px;
+                top: 100px;
+                gap: 10px;
+            }
+
+            .contact-btn {
+                min-width: 52px;
+                min-height: 52px;
+                padding: 12px 16px;
+            }
+
+            .contact-btn i {
+                font-size: 1.3rem;
+            }
+
+            .btn {
+                min-height: 52px;
+                font-size: 1rem;
+                padding: 14px 18px;
+            }
+
+            .specialization-badge {
+                font-size: 0.8rem;
+                padding: 6px 12px;
+            }
+
+            .admission-process {
+                padding: 40px 0;
+            }
+
+            .process-timeline {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px 15px;
+            }
+
+            .process-step {
+                text-align: center;
+                padding: 0;
+            }
+
+            .step-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.6rem;
+                margin: 0 auto 12px;
+                border-width: 4px;
+            }
+
+            .step-icon i {
+                font-size: 1.6rem;
+            }
+
+            .step-number {
+                width: 24px;
+                height: 24px;
+                font-size: 0.8rem;
+                top: -5px;
+                right: -5px;
+                border-width: 2px;
+            }
+
+            .step-title {
+                font-size: 0.9rem;
+                margin-bottom: 6px;
+                line-height: 1.3;
+            }
+
+            .step-description {
+                font-size: 0.8rem;
+                line-height: 1.3;
+                padding: 0 5px;
+            }
+
+            .feature-card,
+            .accreditation-card {
+                padding: 20px 12px;
+            }
+
+            .accreditation-card h4 {
+                font-size: 0.85rem;
+                line-height: 1.3;
+            }
+
+            .review-header {
+                margin-bottom: 15px;
+            }
+
+            .student-photo {
+                width: 50px;
+                height: 50px;
+            }
+
+            .review-content p {
+                font-size: 0.9rem;
+                line-height: 1.6;
+            }
+
+            .top-label {
+                font-size: 0.85rem;
+                padding: 8px 16px;
+            }
+
+            .footer {
+                padding: 30px 0;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .footer-links a {
+                font-size: 0.9rem;
             }
         }
 
@@ -1698,12 +1995,11 @@
     </section>
 
     <!-- Programs Section -->
-    <section class="programs-section section" id="programs">
+    <section class="programs-section section" id="programs" style="padding-top: 40px;">
         <div class="container">
-            <h2>Online Master's & Bachelor's Program</h2>
+            <h2>Our Online Programs</h2>
             <div class="program-tabs">
                 <button class="tab-btn active" data-filter="all">All Courses</button>
-                <button class="tab-btn" data-filter="popular">Popular Courses</button>
                 <button class="tab-btn" data-filter="ug">UG Courses</button>
                 <button class="tab-btn" data-filter="pg">PG Courses</button>
             </div>
@@ -1817,7 +2113,7 @@
     </section>
 
     <!-- University Section -->
-    <section class="university-section section" id="about">
+    <section class="university-section section" id="about" style="padding-top: 40px;">
         <div class="container">
             <h2>Amity Online University</h2>
             <p>How about getting a degree from the top ranked university?</p>
@@ -1913,12 +2209,13 @@
     </section>
 
     <!-- Admission Process -->
-    <section class="admission-process section" id="admissions">
+    <section class="admission-process section" id="admissions" style="padding-top: 40px;">
         <div class="container">
             <h2>Admission Process</h2>
             <div class="process-timeline">
                 <div class="process-step">
                     <div class="step-icon">
+                        <span class="step-number">1</span>
                         <i class="fas fa-user-plus"></i>
                     </div>
                     <h3 class="step-title">Register</h3>
@@ -1926,6 +2223,7 @@
                 </div>
                 <div class="process-step">
                     <div class="step-icon">
+                        <span class="step-number">2</span>
                         <i class="fas fa-edit"></i>
                     </div>
                     <h3 class="step-title">Fill Details</h3>
@@ -1933,6 +2231,7 @@
                 </div>
                 <div class="process-step">
                     <div class="step-icon">
+                        <span class="step-number">3</span>
                         <i class="fas fa-cloud-upload-alt"></i>
                     </div>
                     <h3 class="step-title">Upload Documents</h3>
@@ -1940,6 +2239,7 @@
                 </div>
                 <div class="process-step">
                     <div class="step-icon">
+                        <span class="step-number">4</span>
                         <i class="fas fa-paper-plane"></i>
                     </div>
                     <h3 class="step-title">Submit Application</h3>
@@ -1992,7 +2292,7 @@
     </section>
 
     <!-- Reviews Section -->
-    <section class="reviews-section section">
+    <section class="reviews-section section" style="padding-top: 40px;">
         <div class="container">
             <h2>Open & Honest Reviews by our Learners</h2>
             <div class="reviews-grid">
