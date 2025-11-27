@@ -72,7 +72,7 @@ firstName: John
 lastName: Doe
 ...
 Response status: 200
-Response text: {"status":"success","message":"Application submitted successfully!","applicationId":"AMT123456","timestamp":"11/21/2024, 10:30:00 AM"}
+Response text: {"status":"success","message":"Application submitted successfully!","applicationId":"AMT123456","timestamp":"11/21/2025, 10:30:00 AM"}
 ```
 
 ### In Google Apps Script Log:
@@ -82,7 +82,7 @@ Full event object: {...}
 Extracted form data: {"firstName":"John","lastName":"Doe",...}
 Opening Google Sheet with ID: 1ZS4jsxL37Lm8En8Nj-LoLvyjJEX2ioqn8eDzitoxNoo
 Sheet opened successfully. Current rows: 1
-Prepared row data: ["11/21/2024, 10:30:00 AM","AMT123456","John","Doe",...]
+Prepared row data: ["11/21/2025, 10:30:00 AM","AMT123456","John","Doe",...]
 Data added to sheet successfully!
 === FORM SUBMISSION SUCCESS ===
 ```
@@ -90,7 +90,7 @@ Data added to sheet successfully!
 ### In Your Google Sheet:
 | Timestamp | Application ID | First Name | Last Name | Email | ... |
 |-----------|----------------|------------|-----------|-------|-----|
-| 11/21/2024, 10:30:00 AM | AMT123456 | John | Doe | john@example.com | ... |
+| 11/21/2025, 10:30:00 AM | AMT123456 | John | Doe | john@example.com | ... |
 
 ## If It Still Doesn't Work
 
