@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /thank-you.html
+
+Sitemap: https://amityonlineuniversity.com/sitemap.xml
+
+# Crawl-delay for better server performance
+Crawl-delay: 1
