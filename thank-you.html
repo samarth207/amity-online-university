@@ -569,13 +569,16 @@
             // Check if user came from the form submission
             const validReferrer = referrer.includes('application-form') || referrer.includes(window.location.host);
             
-            // Check session storage validity (primary validation method)
-            const validSession = formSubmitted === 'true' && 
-                                submissionTime && 
-                                (Date.now() - parseInt(submissionTime)) < 600000 &&
-                                sessionAppId;
+            // Check if application ID exists and follows correct format
+            const validApplicationId = sessionAppId && sessionAppId.match(/^AMT\d{9}$/);
             
-            // If security check fails, redirect to application form
+            // Check if submission time is recent (within last 10 minutes)
+            const validTimestamp = submissionTime && (Date.now() - parseInt(submissionTime)) < 600000;
+            
+            // Check session storage validity
+            const validSession = formSubmitted === 'true' && validTimestamp && validApplicationId;
+            
+            // If any security check fails, redirect to application form
             if (!validReferrer || !validSession) {
                 console.log('Unauthorized access detected, redirecting...');
                 
@@ -666,9 +669,8 @@
             throw new Error('Unauthorized access');
         }
 
-        // Get application ID from URL parameter (only if authorized)
-        const urlParams = new URLSearchParams(window.location.search);
-        const applicationId = urlParams.get('id') || 'AMT' + Date.now().toString().slice(-6);
+        // Get application ID from sessionStorage
+        const applicationId = sessionStorage.getItem('applicationId') || 'AMT' + Date.now().toString().slice(-9);
         
         // Display the application ID
         document.getElementById('applicationId').textContent = applicationId;
