@@ -1,9 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1XFFXE34XJ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-1XFFXE34XJ');
+    </script>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Apply Now - Amity Online University Application Form</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.png">
+    
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
@@ -759,17 +774,17 @@
     <!-- Navbar -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <a href="index.html" class="nav-logo">
+            <a href="/" class="nav-logo">
                 <img src="assets/images/logo.png" alt="Amity Online University Logo" onerror="this.src='https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100&q=80'">
                 
             </a>
             
             <ul class="nav-menu">
-                <li><a href="index.html#home">Home</a></li>
-                <li><a href="index.html#programs">Programs</a></li>
-                <li><a href="index.html#admissions">Admissions</a></li>
-                <li><a href="index.html#about">About</a></li>
-                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="/#home">Home</a></li>
+                <li><a href="/#programs">Programs</a></li>
+                <li><a href="/#admissions">Admissions</a></li>
+                <li><a href="/#about">About</a></li>
+                <li><a href="/#contact">Contact</a></li>
                 <li><a href="#" class="nav-cta active">Apply Now</a></li>
             </ul>
 
@@ -780,11 +795,11 @@
         
         <div class="mobile-menu" id="mobileMenu">
             <ul>
-                <li><a href="index.html#home">Home</a></li>
-                <li><a href="index.html#programs">Programs</a></li>
-                <li><a href="index.html#admissions">Admissions</a></li>
-                <li><a href="index.html#about">About</a></li>
-                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="/#home">Home</a></li>
+                <li><a href="/#programs">Programs</a></li>
+                <li><a href="/#admissions">Admissions</a></li>
+                <li><a href="/#about">About</a></li>
+                <li><a href="/#contact">Contact</a></li>
             </ul>
             <div class="mobile-cta">
                 <a href="#" class="nav-cta active">Apply Now</a>
@@ -1199,8 +1214,8 @@
                 
                 // Redirect to thank you page after 3 seconds
                 setTimeout(() => {
-                    const timestamp = Date.now();
-                    window.location.href = `thank-you.html?id=${applicationId}&t=${timestamp}`;
+                    // Use replaceState to hide query parameters
+                    window.location.href = 'thank-you';
                 }, 3000);
             })
             .catch((error) => {

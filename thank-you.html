@@ -1,9 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1XFFXE34XJ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-1XFFXE34XJ');
+    </script>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thank You - Application Submitted | Amity Online University</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.png">
+    
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
@@ -456,17 +471,17 @@
     <!-- Navbar -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="index.html" class="nav-logo">
+            <a href="/" class="nav-logo">
                 <img src="assets/images/logo.png" alt="Amity Online University Logo" onerror="this.src='https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100&q=80'">
                 <!-- <span class="nav-logo-text">Amity Online University</span> -->
             </a>
             
-            <ul class="nav-menu">
-                <li><a href="index.html#home">Home</a></li>
-                <li><a href="index.html#programs">Programs</a></li>
-                <li><a href="index.html#admissions">Admissions</a></li>
-                <li><a href="index.html#about">About</a></li>
-                <li><a href="index.html#contact">Contact</a></li>
+            <ul class="mobile-menu">
+                <li><a href="/#home">Home</a></li>
+                <li><a href="/#programs">Programs</a></li>
+                <li><a href="/#admissions">Admissions</a></li>
+                <li><a href="/#about">About</a></li>
+                <li><a href="/#contact">Contact</a></li>
             </ul>
 
             <button class="mobile-menu-toggle" id="mobileMenuToggle">
@@ -476,11 +491,11 @@
         
         <div class="mobile-menu" id="mobileMenu">
             <ul>
-                <li><a href="index.html#home">Home</a></li>
-                <li><a href="index.html#programs">Programs</a></li>
-                <li><a href="index.html#admissions">Admissions</a></li>
-                <li><a href="index.html#about">About</a></li>
-                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="/#home">Home</a></li>
+                <li><a href="/#programs">Programs</a></li>
+                <li><a href="/#admissions">Admissions</a></li>
+                <li><a href="/#about">About</a></li>
+                <li><a href="/#contact">Contact</a></li>
             </ul>
         </div>
     </nav>
@@ -514,11 +529,11 @@
             </div>
 
             <div class="action-buttons">
-                <a href="index.html" class="btn btn-primary">
+                <a href="/" class="btn btn-primary">
                     <i class="fas fa-home" style="margin-right: 8px;"></i>
                     Back to Home
                 </a>
-                <a href="index.html#programs" class="btn btn-secondary">
+                <a href="/#programs" class="btn btn-secondary">
                     <i class="fas fa-graduation-cap" style="margin-right: 8px;"></i>
                     Browse Programs
                 </a>
@@ -555,7 +570,7 @@
             const sessionAppId = sessionStorage.getItem('applicationId');
             
             // Check if user came from the form submission
-            const validReferrer = referrer.includes('application-form.html') || referrer.includes(window.location.host);
+            const validReferrer = referrer.includes('application-form') || referrer.includes(window.location.host);
             
             // Check if application ID exists and follows correct format
             const validApplicationId = applicationId && applicationId.match(/^AMT\d{9}$/);
@@ -618,7 +633,7 @@
                                 <i class="fas fa-info-circle" style="margin-right: 8px; color: #007bff;"></i>
                                 Redirecting in <span id="redirectTimer">3</span> seconds...
                             </div>
-                            <a href="application-form.html" style="
+                            <a href="application-form" style="
                                 background: #FFC107;
                                 color: #002147;
                                 padding: 12px 25px;
@@ -644,7 +659,7 @@
                     
                     if (countdown <= 0) {
                         clearInterval(redirectInterval);
-                        window.location.href = 'application-form.html';
+                        window.location.href = 'application-form';
                     }
                 }, 1000);
                 
