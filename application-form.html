@@ -15,7 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- Security: Block mixed content and upgrade insecure requests -->
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests; block-all-mixed-content">
     
     <title>Apply Now - Amity Online University Application Form</title>
     
@@ -25,6 +25,9 @@
     
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- URL Handler for extensionless URLs -->
+    <script src="assets/url-handler.js"></script>
     
     <!-- Meta Pixel Code -->
     <script>

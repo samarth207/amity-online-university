@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Configuration Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-box {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .success { color: #28a745; }
+        .error { color: #dc3545; }
+        .warning { color: #ffc107; }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover { background: #0056b3; }
+        pre {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔍 Server Configuration Diagnostics</h1>
+    
+    <div class="test-box">
+        <h2>Current URL Information</h2>
+        <pre id="urlInfo"></pre>
+    </div>
+
+    <div class="test-box">
+        <h2>URL Rewrite Tests</h2>
+        <p>Click the buttons below to test if extensionless URLs work:</p>
+        <button onclick="testUrl('application-form')">Test /application-form</button>
+        <button onclick="testUrl('thank-you')">Test /thank-you</button>
+        <button onclick="testUrl('application-form.html')">Test /application-form.html</button>
+        <div id="testResults" style="margin-top: 15px;"></div>
+    </div>
+
+    <div class="test-box">
+        <h2>Server Configuration Check</h2>
+        <div id="serverInfo">
+            <p>✅ JavaScript is working</p>
+            <p id="protocolCheck"></p>
+            <p id="rewriteCheck"></p>
+        </div>
+    </div>
+
+    <div class="test-box">
+        <h2>Quick Fixes</h2>
+        <ul>
+            <li><strong>If .htaccess isn't working:</strong> Contact your hosting provider to enable mod_rewrite</li>
+            <li><strong>If you see 404 errors:</strong> Make sure .htaccess file is uploaded and readable (chmod 644)</li>
+            <li><strong>Temporary solution:</strong> Use .html extensions until server config is fixed</li>
+        </ul>
+    </div>
+
+    <script>
+        // Display current URL info
+        const urlInfo = document.getElementById('urlInfo');
+        urlInfo.textContent = `
+Full URL: ${window.location.href}
+Pathname: ${window.location.pathname}
+Protocol: ${window.location.protocol}
+Host: ${window.location.host}
+        `.trim();
+
+        // Check protocol
+        const protocolCheck = document.getElementById('protocolCheck');
+        if (window.location.protocol === 'https:') {
+            protocolCheck.innerHTML = '<span class="success">✅ HTTPS is working</span>';
+        } else {
+            protocolCheck.innerHTML = '<span class="warning">⚠️ Not using HTTPS</span>';
+        }
+
+        // Check if we're on an extensionless URL
+        const rewriteCheck = document.getElementById('rewriteCheck');
+        const path = window.location.pathname;
+        if (path.includes('.html')) {
+            rewriteCheck.innerHTML = '<span class="warning">⚠️ URL includes .html extension</span>';
+        } else if (path === '/test' || !path.endsWith('.html')) {
+            rewriteCheck.innerHTML = '<span class="success">✅ Extensionless URL detected</span>';
+        }
+
+        // Test URL accessibility
+        async function testUrl(path) {
+            const results = document.getElementById('testResults');
+            results.innerHTML = '<p>Testing...</p>';
+            
+            try {
+                const response = await fetch(`/${path}`, { 
+                    method: 'HEAD',
+                    cache: 'no-cache'
+                });
+                
+                if (response.ok) {
+                    results.innerHTML = `<p class="success">✅ /${path} is accessible (Status: ${response.status})</p>`;
+                } else {
+                    results.innerHTML = `<p class="error">❌ /${path} returned status ${response.status}</p>`;
+                }
+            } catch (error) {
+                results.innerHTML = `<p class="error">❌ Failed to test /${path}: ${error.message}</p>`;
+            }
+        }
+
+        // Auto-test on load
+        window.addEventListener('load', () => {
+            console.log('Diagnostics page loaded');
+            console.log('Current URL:', window.location.href);
+        });
+    </script>
+</body>
+</html>

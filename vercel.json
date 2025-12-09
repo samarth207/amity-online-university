@@ -1,0 +1,24 @@
+{
+  "rewrites": [
+    {
+      "source": "/application-form",
+      "destination": "/application-form.html"
+    },
+    {
+      "source": "/thank-you",
+      "destination": "/thank-you.html"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/application-form.html",
+      "destination": "/application-form",
+      "permanent": true
+    },
+    {
+      "source": "/thank-you.html",
+      "destination": "/thank-you",
+      "permanent": true
+    }
+  ]
+}

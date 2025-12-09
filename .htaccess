@@ -1,21 +1,28 @@
 # Enable URL Rewriting
 RewriteEngine On
+RewriteBase /
 
-# Remove .html extension from URLs
+# Force HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Redirect .html URLs to extensionless URLs (must come before internal rewrite)
+RewriteCond %{THE_REQUEST} ^GET\ /[^?\s]+\.html
+RewriteRule ^(.*)\.html$ /$1 [R=301,L]
+
+# Internal rewrite: serve .html files for extensionless URLs
+RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}\.html -f
 RewriteRule ^(.*)$ $1.html [L]
 
-# Redirect .html URLs to extensionless URLs
-RewriteCond %{THE_REQUEST} ^GET\ /[^?\s]+\.html
-RewriteRule ^(.*)\.html$ /$1 [R=301,L]
-
-# Force HTTPS (optional - uncomment if you have SSL)
-# RewriteCond %{HTTPS} off
-# RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-
 # Set default document
 DirectoryIndex index.html
+
+# Enable CORS for assets
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+</IfModule>
 
 # Custom 404 error page (optional)
 # ErrorDocument 404 /404.html
