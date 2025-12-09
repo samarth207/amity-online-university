@@ -1207,14 +1207,23 @@
                 // Show success notification popup
                 showSuccessNotification(applicationId);
                 
-                // Set session flag for authorized access to thank you page
+                // Set session flag for authorized access to thank you page BEFORE redirect
                 sessionStorage.setItem('formSubmitted', 'true');
                 sessionStorage.setItem('submissionTime', Date.now().toString());
                 sessionStorage.setItem('applicationId', applicationId);
                 
+                // Debug logging
+                console.log('=== Session Storage Set ===');
+                console.log('formSubmitted:', sessionStorage.getItem('formSubmitted'));
+                console.log('submissionTime:', sessionStorage.getItem('submissionTime'));
+                console.log('applicationId:', sessionStorage.getItem('applicationId'));
+                
                 // Redirect to thank you page after 3 seconds
                 setTimeout(() => {
-                    // Use replaceState to hide query parameters
+                    // Verify session storage before redirect
+                    console.log('=== Before Redirect ===');
+                    console.log('formSubmitted:', sessionStorage.getItem('formSubmitted'));
+                    console.log('applicationId:', sessionStorage.getItem('applicationId'));
                     window.location.href = 'thank-you';
                 }, 3000);
             })

@@ -566,17 +566,29 @@
             const submissionTime = sessionStorage.getItem('submissionTime');
             const sessionAppId = sessionStorage.getItem('applicationId');
             
-            // Check if user came from the form submission
-            const validReferrer = referrer.includes('application-form') || referrer.includes(window.location.host);
+            // Debug logging
+            console.log('=== Thank You Page Access Check ===');
+            console.log('Referrer:', referrer);
+            console.log('Form Submitted:', formSubmitted);
+            console.log('Submission Time:', submissionTime);
+            console.log('Application ID:', sessionAppId);
             
-            // Check if application ID exists and follows correct format
+            // Check if user came from the form submission
+            // Allow if no referrer (direct navigation from same page) or if referrer is from same host
+            const validReferrer = !referrer || referrer.includes('application-form') || referrer.includes(window.location.host);
+            console.log('Valid Referrer:', validReferrer);
+            
+            // Check if application ID exists and follows correct format (AMT + 9 digits)
             const validApplicationId = sessionAppId && sessionAppId.match(/^AMT\d{9}$/);
+            console.log('Valid Application ID:', validApplicationId);
             
             // Check if submission time is recent (within last 10 minutes)
             const validTimestamp = submissionTime && (Date.now() - parseInt(submissionTime)) < 600000;
+            console.log('Valid Timestamp:', validTimestamp);
             
             // Check session storage validity
             const validSession = formSubmitted === 'true' && validTimestamp && validApplicationId;
+            console.log('Valid Session:', validSession);
             
             // If any security check fails, redirect to application form
             if (!validReferrer || !validSession) {
