@@ -1,33 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1XFFXE34XJ"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-1XFFXE34XJ');
-    </script>
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Security: Block mixed content and upgrade insecure requests -->
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-    
     <title>Thank You - Application Submitted | Amity Online University</title>
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="assets/images/logo.png">
-    <link rel="shortcut icon" type="image/png" href="assets/images/logo.png">
-    
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- URL Handler for extensionless URLs -->
-    <script src="assets/url-handler.js"></script>
     
     <!-- Meta Pixel Code -->
     <script>
@@ -484,11 +462,11 @@
             </a>
             
             <ul class="nav-menu">
-                <li><a href="./#home">Home</a></li>
-                <li><a href="./#programs">Programs</a></li>
-                <li><a href="./#admissions">Admissions</a></li>
-                <li><a href="./#about">About</a></li>
-                <li><a href="./#contact">Contact</a></li>
+                <li><a href="/#home">Home</a></li>
+                <li><a href="/#programs">Programs</a></li>
+                <li><a href="/#admissions">Admissions</a></li>
+                <li><a href="/#about">About</a></li>
+                <li><a href="/#contact">Contact</a></li>
             </ul>
 
             <button class="mobile-menu-toggle" id="mobileMenuToggle">
@@ -498,11 +476,11 @@
         
         <div class="mobile-menu" id="mobileMenu">
             <ul>
-                <li><a href="./#home">Home</a></li>
-                <li><a href="./#programs">Programs</a></li>
-                <li><a href="./#admissions">Admissions</a></li>
-                <li><a href="./#about">About</a></li>
-                <li><a href="./#contact">Contact</a></li>
+                <li><a href="/#home">Home</a></li>
+                <li><a href="/#programs">Programs</a></li>
+                <li><a href="/#admissions">Admissions</a></li>
+                <li><a href="/#about">About</a></li>
+                <li><a href="/#contact">Contact</a></li>
             </ul>
         </div>
     </nav>
@@ -536,11 +514,11 @@
             </div>
 
             <div class="action-buttons">
-                <a href="./#home" class="btn btn-primary">
+                <a href="/" class="btn btn-primary">
                     <i class="fas fa-home" style="margin-right: 8px;"></i>
                     Back to Home
                 </a>
-                <a href="./#programs" class="btn btn-secondary">
+                <a href="/#programs" class="btn btn-secondary">
                     <i class="fas fa-graduation-cap" style="margin-right: 8px;"></i>
                     Browse Programs
                 </a>
@@ -548,7 +526,7 @@
 
             <div class="contact-info">
                 <h4><i class="fas fa-phone" style="margin-right: 8px; color: #FFC107;"></i>Need Help?</h4>
-                <p><strong>Admissions Helpline:</strong> <a href="tel:+919311381814">+91 93113 81814</a></p>
+                <p><strong>Admissions Helpline:</strong> <a href="tel:+919266530366">+91 92665 30366</a></p>
                 <p><strong>Available:</strong> Monday to Friday, 9:00 AM to 7:00 PM</p>
             </div>
         </div>
@@ -566,39 +544,33 @@
     <script>
         // Security: Prevent direct URL access
         function checkAuthorizedAccess() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const applicationId = urlParams.get('id');
             const referrer = document.referrer;
+            const timestamp = urlParams.get('t');
             
             // Check session storage for form submission flag
             const formSubmitted = sessionStorage.getItem('formSubmitted');
             const submissionTime = sessionStorage.getItem('submissionTime');
             const sessionAppId = sessionStorage.getItem('applicationId');
             
-            // Debug logging
-            console.log('=== Thank You Page Access Check ===');
-            console.log('Referrer:', referrer);
-            console.log('Form Submitted:', formSubmitted);
-            console.log('Submission Time:', submissionTime);
-            console.log('Application ID:', sessionAppId);
-            
             // Check if user came from the form submission
-            // Allow if no referrer (direct navigation from same page) or if referrer is from same host
-            const validReferrer = !referrer || referrer.includes('application-form') || referrer.includes(window.location.host);
-            console.log('Valid Referrer:', validReferrer);
+            const validReferrer = referrer.includes('application-form') || referrer.includes(window.location.host);
             
-            // Check if application ID exists and follows correct format (AMT + 9 digits)
-            const validApplicationId = sessionAppId && sessionAppId.match(/^AMT\d{9}$/);
-            console.log('Valid Application ID:', validApplicationId);
+            // Check if application ID exists and follows correct format
+            const validApplicationId = applicationId && applicationId.match(/^AMT\d{9}$/);
             
-            // Check if submission time is recent (within last 10 minutes)
-            const validTimestamp = submissionTime && (Date.now() - parseInt(submissionTime)) < 600000;
-            console.log('Valid Timestamp:', validTimestamp);
+            // Check if timestamp is recent (within last 10 minutes)
+            const validTimestamp = timestamp && (Date.now() - parseInt(timestamp)) < 600000;
             
             // Check session storage validity
-            const validSession = formSubmitted === 'true' && validTimestamp && validApplicationId;
-            console.log('Valid Session:', validSession);
+            const validSession = formSubmitted === 'true' && 
+                                submissionTime && 
+                                (Date.now() - parseInt(submissionTime)) < 600000 &&
+                                sessionAppId === applicationId;
             
             // If any security check fails, redirect to application form
-            if (!validReferrer || !validSession) {
+            if (!validReferrer || !validApplicationId || !validTimestamp || !validSession) {
                 console.log('Unauthorized access detected, redirecting...');
                 
                 // Clear any invalid session data
@@ -688,11 +660,18 @@
             throw new Error('Unauthorized access');
         }
 
-        // Get application ID from sessionStorage
-        const applicationId = sessionStorage.getItem('applicationId') || 'AMT' + Date.now().toString().slice(-9);
+        // Get application ID from URL parameter (only if authorized)
+        const urlParams = new URLSearchParams(window.location.search);
+        const applicationId = urlParams.get('id') || 'AMT' + Date.now().toString().slice(-6);
         
         // Display the application ID
         document.getElementById('applicationId').textContent = applicationId;
+
+        // Clean URL by removing query parameters
+        if (window.history.replaceState) {
+            const cleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+            window.history.replaceState({}, document.title, cleanUrl);
+        }
 
         // Clean up session after successful access (prevent reuse)
         setTimeout(() => {
