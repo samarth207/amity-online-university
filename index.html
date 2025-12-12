@@ -258,7 +258,7 @@
         }
 
         .hero-text {
-            padding-top: 40px;
+            padding-top: -110px;
         }
 
         .hero-text h1 {
@@ -365,12 +365,53 @@
             font-size: 0.9rem;
         }
 
+        .hero-image {
+            position: relative;
+            width: 100%;
+            min-height: 400px;
+        }
+
         .hero-image img {
             width: 100%;
             height: 400px;
             object-fit: cover;
             border-radius: 12px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .hero-image img.active {
+            opacity: 1;
+        }
+
+        /* UGC Badge */
+        .ugc-badge {
+            background: #ffffff;
+            padding: 8px 12px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .ugc-badge img {
+            width: 35px;
+            height: 35px;
+            object-fit: contain;
+        }
+
+        .ugc-badge span {
+            font-weight: 600;
+            color: #002147;
+            font-size: 0.85rem;
+            white-space: nowrap;
         }
 
         /* Top label (just below navbar) */
@@ -1508,8 +1549,27 @@
                 margin-bottom: 30px;
             }
 
+            .hero-image {
+                min-height: 300px;
+            }
+
             .hero-image img {
                 height: 300px;
+            }
+
+            .ugc-badge {
+                padding: 6px 10px;
+                gap: 6px;
+                margin-bottom: 12px;
+            }
+
+            .ugc-badge img {
+                width: 28px;
+                height: 28px;
+            }
+
+            .ugc-badge span {
+                font-size: 0.75rem;
             }
 
             .hero-usps {
@@ -1691,8 +1751,27 @@
                 height: 220px;
             }
 
+            .hero-image {
+                min-height: 220px;
+            }
+
             .hero-image img {
-                height: 250px;
+                height: 220px;
+            }
+
+            .ugc-badge {
+                padding: 5px 8px;
+                gap: 5px;
+                margin-bottom: 10px;
+            }
+
+            .ugc-badge img {
+                width: 24px;
+                height: 24px;
+            }
+
+            .ugc-badge span {
+                font-size: 0.7rem;
             }
 
             /* Mobile-specific improvements */
@@ -2215,6 +2294,10 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
+                    <div class="ugc-badge">
+                        <img src="assets/images/ugc-logo.svg" alt="UGC Logo">
+                        <span>UGC Entitled</span>
+                    </div>
                     <h1>Online Degree From Amity Online University</h1>
                     <p>India's #1 Choice for Online Degree Programs</p>
                     <div class="hero-buttons">
@@ -2223,7 +2306,9 @@
                     </div>
                 </div>
                 <div class="hero-image">
-                    <img src="assets/images/campus.png" alt="Amity University Campus" onerror="this.src='https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'">
+                    <img src="assets/images/campus.png" alt="Amity University Campus" class="active" onerror="this.src='https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'">
+                    <img src="assets/images/university2.jpg" alt="Amity University Campus 2">
+                    <img src="assets/images/university3.JPG" alt="Amity University Campus 3">
                 </div>
                 <div class="hero-usps" aria-hidden="false">
                     <span class="usp-item">Interview preparation &amp; mock interviews</span>
@@ -2254,7 +2339,7 @@
                         <div class="program-details">
                             <p><strong>Eligibility:</strong> Bachelor's Degree</p>
                             <p><strong>Duration:</strong> 2 Years</p>
-                            <p><strong>Fees:</strong> No Cost EMI available</p>
+                            <p><strong>Fees:</strong> No Cost EMI & Scholarship available</p>
                         </div>
                         <a href="application-form" class="btn btn-primary">Apply Now</a>
                     </div>
@@ -2267,7 +2352,7 @@
                         <div class="program-details">
                             <p><strong>Eligibility:</strong> B.Com/BBA</p>
                             <p><strong>Duration:</strong> 2 Years</p>
-                            <p><strong>Fees:</strong> No Cost EMI available</p>
+                            <p><strong>Fees:</strong> No Cost EMI & Scholarship available</p>
                         </div>
                         <a href="application-form" class="btn btn-primary">Apply Now</a>
                     </div>
@@ -2280,7 +2365,7 @@
                         <div class="program-details">
                             <p><strong>Eligibility:</strong> BCA/B.Sc IT</p>
                             <p><strong>Duration:</strong> 2 Years</p>
-                            <p><strong>Fees:</strong> No Cost EMI available</p>
+                            <p><strong>Fees:</strong> No Cost EMI & Scholarship available</p>
                         </div>
                         <a href="application-form" class="btn btn-primary">Apply Now</a>
                     </div>
@@ -2293,7 +2378,7 @@
                         <div class="program-details">
                             <p><strong>Eligibility:</strong> B.Sc in relevant field</p>
                             <p><strong>Duration:</strong> 2 Years</p>
-                            <p><strong>Fees:</strong> No Cost EMI available</p>
+                            <p><strong>Fees:</strong> No Cost EMI & Scholarship available</p>
                         </div>
                         <a href="application-form" class="btn btn-primary">Apply Now</a>
                     </div>
@@ -2306,7 +2391,7 @@
                         <div class="program-details">
                             <p><strong>Eligibility:</strong> Bachelor's Degree</p>
                             <p><strong>Duration:</strong> 2 Years</p>
-                            <p><strong>Fees:</strong> No Cost EMI available</p>
+                            <p><strong>Fees:</strong> No Cost EMI & Scholarship available</p>
                         </div>
                         <a href="application-form" class="btn btn-primary">Apply Now</a>
                     </div>
@@ -2319,7 +2404,7 @@
                         <div class="program-details">
                             <p><strong>Eligibility:</strong> 12th Pass</p>
                             <p><strong>Duration:</strong> 3 Years</p>
-                            <p><strong>Fees:</strong> No Cost EMI available</p>
+                            <p><strong>Fees:</strong> No Cost EMI & Scholarship available</p>
                         </div>
                         <a href="application-form" class="btn btn-primary">Apply Now</a>
                     </div>
@@ -2332,7 +2417,7 @@
                         <div class="program-details">
                             <p><strong>Eligibility:</strong> 12th Pass</p>
                             <p><strong>Duration:</strong> 3 Years</p>
-                            <p><strong>Fees:</strong> No Cost EMI available</p>
+                            <p><strong>Fees:</strong> No Cost EMI & Scholarship available</p>
                         </div>
                         <a href="application-form" class="btn btn-primary">Apply Now</a>
                     </div>
@@ -2345,7 +2430,7 @@
                         <div class="program-details">
                             <p><strong>Eligibility:</strong> 12th Pass</p>
                             <p><strong>Duration:</strong> 3 Years</p>
-                            <p><strong>Fees:</strong> No Cost EMI available</p>
+                            <p><strong>Fees:</strong> No Cost EMI & Scholarship available</p>
                         </div>
                         <a href="application-form" class="btn btn-primary">Apply Now</a>
                     </div>
@@ -3154,6 +3239,21 @@
     </div>
 
     <script>
+        // Hero image slideshow
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.hero-image img:not(.ugc-badge img)');
+        
+        function showNextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+        
+        // Change slide every 3 seconds
+        if (slides.length > 1) {
+            setInterval(showNextSlide, 3000);
+        }
+
         // Navbar scroll effect
         window.addEventListener('scroll', function() {
             const navbar = document.getElementById('navbar');
