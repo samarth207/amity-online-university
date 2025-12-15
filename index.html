@@ -1,45 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1XFFXE34XJ"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-1XFFXE34XJ');
-    </script>
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Online Degree From Amity Online University - India's #1 Choice</title>
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.png">
-    
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Earn your UGC-approved online degree from Amity University. MBA, BBA, BCA, MCA programs with 100% placement assistance. Apply now for admission 2025!">
-    <meta name="keywords" content="online degree, amity online university, online MBA, online BBA, online BCA, distance learning, UGC approved, online education India, amity university courses">
-    <meta name="author" content="Amity Online University">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://amityonlineuniversity.com/">
-    
-    <!-- Open Graph Tags for Social Media -->
-    <meta property="og:title" content="Amity Online University - UGC Approved Online Degrees">
-    <meta property="og:description" content="India's leading online university offering MBA, BBA, BCA, and more. 100% placement assistance. Enroll now!">
-    <meta property="og:image" content="https://amityonlineuniversity.com/assets/images/og-image.jpg">
-    <meta property="og:url" content="https://amityonlineuniversity.com/">
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Amity Online University">
-    
-    <!-- Twitter Card Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Amity Online University - UGC Approved Online Degrees">
-    <meta name="twitter:description" content="India's leading online university. MBA, BBA, BCA with 100% placement assistance.">
-    <meta name="twitter:image" content="https://amityonlineuniversity.com/assets/images/og-image.jpg">
-    
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
@@ -60,33 +25,6 @@
     src="https://www.facebook.com/tr?id=1365152001140855&ev=PageView&noscript=1"
     /></noscript>
     <!-- End Meta Pixel Code -->
-    
-    <!-- Structured Data (JSON-LD) -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "EducationalOrganization",
-      "name": "Amity Online University",
-      "description": "India's leading online university offering UGC-approved degrees in MBA, BBA, BCA, MCA, and more.",
-      "url": "https://amityonlineuniversity.com",
-      "logo": "https://amityonlineuniversity.com/assets/images/logo.png",
-      "telephone": "+91-9311381814",
-      "address": {
-        "@type": "PostalAddress",
-        "addressCountry": "IN"
-      },
-      "sameAs": [
-        "https://www.facebook.com/online.amity",
-      ],
-      "offers": {
-        "@type": "AggregateOffer",
-        "offerCount": "15",
-        "lowPrice": "75000",
-        "highPrice": "200000",
-        "priceCurrency": "INR"
-      }
-    }
-    </script>
     
     <style>
         * {
@@ -320,7 +258,7 @@
         }
 
         .hero-text {
-            padding-top: 40px;
+            padding-top: -110px;
         }
 
         .hero-text h1 {
@@ -427,12 +365,53 @@
             font-size: 0.9rem;
         }
 
+        .hero-image {
+            position: relative;
+            width: 100%;
+            min-height: 400px;
+        }
+
         .hero-image img {
             width: 100%;
             height: 400px;
             object-fit: cover;
             border-radius: 12px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .hero-image img.active {
+            opacity: 1;
+        }
+
+        /* UGC Badge */
+        .ugc-badge {
+            background: #ffffff;
+            padding: 8px 12px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .ugc-badge img {
+            width: 35px;
+            height: 35px;
+            object-fit: contain;
+        }
+
+        .ugc-badge span {
+            font-weight: 600;
+            color: #002147;
+            font-size: 0.85rem;
+            white-space: nowrap;
         }
 
         /* Top label (just below navbar) */
@@ -481,6 +460,26 @@
             gap: 30px;
         }
 
+        @media (max-width: 768px) {
+            .accreditation-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .accreditation-card {
+                padding: 20px 15px;
+            }
+
+            .accreditation-card h4 {
+                font-size: 0.8rem;
+            }
+
+            .accreditation-card .accreditation-img {
+                width: 50px;
+                height: 50px;
+            }
+        }
+
         .accreditation-card {
             background: white;
             padding: 30px 20px;
@@ -508,6 +507,162 @@
             color: #002147;
             font-weight: 600;
             font-size: 0.9rem;
+        }
+
+        /* Holistic Career Services */
+        .career-services-section {
+            background: #f8f9fa;
+            padding: 80px 0;
+        }
+
+        .career-services-section h2 {
+            font-size: 2.5rem;
+            color: #002147;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .career-services-section hr {
+            width: 80px;
+            height: 3px;
+            background: #FFC107;
+            border: none;
+            margin: 0 auto 50px;
+        }
+
+        .career-carousel-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .career-carousel-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .career-slide {
+            width: 100%;
+        }
+
+        .career-card {
+            background: #ffffff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 33, 71, 0.08);
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #e9ecef;
+        }
+
+        .career-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0, 33, 71, 0.15);
+            border-color: #FFC107;
+        }
+
+        .career-card-img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+        }
+
+        .career-card-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .career-card-content h3 {
+            color: #002147;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .career-checklist {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            flex-grow: 1;
+        }
+
+        .career-checklist li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 12px;
+            color: #555;
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+
+        .career-checklist li svg {
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+
+        @media (max-width: 1024px) {
+            .career-carousel-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .career-carousel-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+
+            .career-services-section {
+                padding: 60px 0;
+            }
+
+            .career-services-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .career-card-img {
+                height: 140px;
+            }
+
+            .career-card-content {
+                padding: 15px;
+            }
+
+            .career-card-content h3 {
+                font-size: 0.95rem;
+                margin-bottom: 12px;
+            }
+
+            .career-checklist li {
+                font-size: 0.75rem;
+                margin-bottom: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .career-carousel-container {
+                grid-template-columns: 1fr;
+            }
+
+            .career-services-section {
+                padding: 60px 0;
+            }
+
+            .career-services-section h2 {
+                font-size: 1.75rem;
+            }
+
+            .career-card-img {
+                height: 180px;
+            }
         }
 
         /* Why Choose Section */
@@ -656,6 +811,42 @@
             gap: 30px;
         }
 
+        @media (max-width: 768px) {
+            .program-tabs {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+
+            .tab-btn {
+                padding: 10px 15px;
+                font-size: 0.85rem;
+            }
+
+            .program-card .btn {
+                padding: 8px 12px;
+                font-size: 0.8rem;
+                white-space: nowrap;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: 600;
+            }
+
+            .program-title {
+                font-size: 0.95rem;
+            }
+
+            .specialization-badge {
+                font-size: 0.7rem;
+                padding: 4px 8px;
+            }
+
+            .program-details p {
+                font-size: 0.8rem;
+            }
+        }
+
         .program-card {
             background: white;
             border-radius: 12px;
@@ -727,7 +918,7 @@
         .process-timeline {
             position: relative;
             display: flex;
-            gap: 30px;
+            gap: 20px;
             align-items: flex-start;
         }
 
@@ -768,22 +959,23 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
         }
 
-        .step-number {
+        .step-icon::before {
+            content: attr(data-step);
             position: absolute;
-            top: -8px;
-            right: -8px;
-            width: 28px;
-            height: 28px;
+            top: -10px;
+            right: -10px;
             background: #002147;
-            color: white;
+            color: #FFC107;
+            width: 30px;
+            height: 30px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.9rem;
             font-weight: 700;
-            border: 3px solid white;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            font-size: 1rem;
+            box-shadow: 0 2px 8px rgba(0, 33, 71, 0.3);
+            border: 3px solid #fff;
         }
 
         .step-title {
@@ -1064,31 +1256,18 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            body {
-                font-size: 16px;
-            }
-
-            .container {
-                padding: 0 20px;
-            }
-
-            .section {
-                padding: 50px 0;
-            }
-
             .nav-menu {
                 display: none;
             }
 
             .mobile-menu-toggle {
                 display: block;
-                padding: 10px;
-                min-width: 48px;
-                min-height: 48px;
+                padding: 8px;
+                min-width: 44px;
+                min-height: 44px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                font-size: 1.3rem;
             }
 
             .nav-logo-text {
@@ -1097,11 +1276,11 @@
 
             .nav-logo img {
                 margin-right: 0;
-                height: 42px;
+                height: 40px;
             }
 
             .nav-container {
-                padding: 12px 20px;
+                padding: 10px 15px;
             }
 
             .hero-content {
@@ -1116,72 +1295,130 @@
             }
 
             .hero-text h1 {
-                font-size: 2rem;
-                line-height: 1.3;
-                margin-bottom: 15px;
+                font-size: 1.8rem;
+                line-height: 1.25;
+                margin-bottom: 12px;
             }
 
             .hero-text p {
-                font-size: 1.1rem;
-                margin-bottom: 25px;
+                font-size: 0.95rem;
+                margin-bottom: 20px;
                 line-height: 1.5;
             }
 
             .hero-buttons {
-                flex-direction: column;
+                flex-direction: row;
                 align-items: center;
-                gap: 15px;
+                justify-content: center;
+                gap: 10px;
+                flex-wrap: wrap;
             }
 
-            .btn {
-                width: 100%;
-                max-width: 100%;
-                min-height: 54px;
-                font-size: 1.05rem;
-                padding: 15px 20px;
-                font-weight: 700;
+            .hero-buttons .btn {
+                width: auto;
+                max-width: none;
+                min-height: 40px;
+                font-size: 0.8rem;
+                padding: 10px 16px;
+                flex: 0 0 auto;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
             }
 
             .certificate-content {
                 grid-template-columns: 1fr;
-                gap: 30px;
             }
 
             .contact-content {
                 grid-template-columns: 1fr;
                 text-align: center;
-                gap: 30px;
+            }
+
+            .contact-text h2 {
+                font-size: 1.6rem;
+            }
+
+            .contact-text p {
+                font-size: 1rem;
+                margin-bottom: 20px;
             }
 
             .contact-image img {
-                max-width: 100%;
-                height: auto;
+                max-width: 200px;
+                height: 180px;
             }
 
             .programs-grid {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 20px;
+                gap: 12px;
+            }
+
+            .program-card img {
+                height: 120px;
+            }
+
+            .program-content {
+                padding: 15px;
             }
 
             .features-grid {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 18px;
+                gap: 15px;
+            }
+
+            .feature-card {
+                padding: 18px 12px;
+            }
+
+            .feature-card i {
+                font-size: 1.8rem;
+                margin-bottom: 12px;
+            }
+
+            .feature-card h3 {
+                font-size: 0.9rem;
+                margin-bottom: 8px;
+            }
+
+            .feature-card p {
+                font-size: 0.8rem;
             }
 
             .accreditation-grid {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 18px;
+                gap: 20px;
             }
 
-            .reviews-grid {
-                grid-template-columns: 1fr;
-                gap: 25px;
+            .accreditation-card {
+                padding: 20px 15px;
+            }
+
+            .accreditation-card h4 {
+                font-size: 0.8rem;
+            }
+
+            .accreditation-card .accreditation-img {
+                width: 50px;
+                height: 50px;
+            }
+
+            .admission-process {
+                padding: 50px 0;
+            }
+
+            .admission-process h2 {
+                font-size: 1.8rem;
+                margin-bottom: 35px;
             }
 
             .process-timeline {
                 display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                gap: 25px 20px;
+                grid-template-columns: 1fr;
+                gap: 25px;
+                max-width: 400px;
+                margin: 0 auto;
             }
 
             .process-timeline::before {
@@ -1189,400 +1426,51 @@
             }
 
             .process-step {
-                text-align: center;
-            }
-
-            .step-icon {
-                width: 70px;
-                height: 70px;
-                font-size: 1.8rem;
-                margin: 0 auto 15px;
-                border-width: 5px;
-            }
-
-            .step-number {
-                width: 26px;
-                height: 26px;
-                font-size: 0.85rem;
-                top: -6px;
-                right: -6px;
-            }
-
-            .step-title {
-                font-size: 1rem;
-                margin-bottom: 8px;
-            }
-
-            .step-description {
-                font-size: 0.85rem;
-                line-height: 1.4;
-            }
-
-            .partners-slider {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .program-tabs {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                gap: 10px;
-                width: 100%;
-            }
-
-            .tab-btn {
-                flex: none;
-                min-width: auto;
-                width: 100%;
-                min-height: 48px;
-                padding: 12px 12px;
-                font-size: 0.9rem;
-                white-space: nowrap;
-            }
-
-            .contact-float {
-                top: 120px;
-                right: 15px;
-                gap: 12px;
-            }
-
-            .contact-btn {
-                padding: 14px 18px;
-                border-radius: 28px;
-                font-size: 0.9rem;
-                min-height: 54px;
-                min-width: 54px;
-            }
-
-            .contact-btn span {
-                display: none;
-            }
-
-            .contact-btn i {
-                font-size: 1.4rem;
-            }
-
-            .hero-image img {
-                height: auto;
-                max-height: 300px;
-                width: 100%;
-                object-fit: cover;
-            }
-
-            .hero-usps {
-                gap: 10px;
-                margin-top: 25px;
-                justify-content: center;
-                grid-column: 1;
-                padding: 0 10px;
-                flex-wrap: wrap;
-            }
-
-            .usp-item {
-                font-size: 0.85rem;
-                padding: 10px 14px;
-                white-space: normal;
-                text-align: center;
-                line-height: 1.4;
-                flex: 1 1 100%;
-                min-width: 0;
-            }
-
-            .program-card {
-                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            }
-
-            .program-content {
-                padding: 20px 15px;
-            }
-
-            .program-title {
-                font-size: 1.1rem;
-                line-height: 1.3;
-            }
-
-            .feature-card,
-            .accreditation-card {
-                padding: 25px 18px;
-            }
-
-            .feature-card h3 {
-                font-size: 1rem;
-                line-height: 1.3;
-            }
-
-            .feature-card i {
-                font-size: 2.2rem;
-            }
-
-            .review-card {
-                padding: 25px 20px;
-            }
-
-            .mobile-menu a {
-                padding: 16px 0;
-                font-size: 1.05rem;
-                border-bottom: 1px solid #f0f0f0;
-            }
-
-            .mobile-menu a:last-child {
-                border-bottom: none;
-            }
-
-            h2 {
-                font-size: 1.9rem;
-                line-height: 1.3;
-                margin-bottom: 25px;
-            }
-
-            .certificate-image img {
-                width: 100%;
-                height: auto;
-            }
-
-            .benefits-list li {
-                font-size: 0.95rem;
-                padding: 10px 0;
-            }
-        }
-
-        @media (max-width: 480px) {
-            body {
-                font-size: 15px;
-            }
-
-            .container {
-                padding: 0 16px;
-            }
-
-            .section {
-                padding: 40px 0;
-            }
-
-            .hero {
-                padding: 40px 0 50px;
-            }
-
-            .hero-text h1 {
-                font-size: 1.75rem;
-                line-height: 1.3;
-            }
-
-            .hero-text p {
-                font-size: 1rem;
-            }
-
-            .university-section h2,
-            .why-choose h2,
-            .programs-section h2,
-            .admission-process h2,
-            .partners-section h2,
-            .reviews-section h2,
-            .certificate-section h2,
-            .contact-section h2 {
-                font-size: 1.65rem;
-                line-height: 1.3;
-                margin-bottom: 25px;
-            }
-
-            .program-card {
-                margin-bottom: 20px;
-            }
-
-            .feature-card,
-            .accreditation-card,
-            .review-card {
-                margin-bottom: 20px;
-                padding: 25px 18px;
-            }
-
-            .nav-container {
-                padding: 10px 16px;
-            }
-
-            body {
-                padding-top: 70px;
-            }
-
-            .contact-image img {
-                max-width: 100%;
-                height: auto;
-            }
-
-            .hero-image img {
-                height: auto;
-                max-height: 250px;
-                width: 100%;
-                object-fit: cover;
-            }
-
-            .mobile-menu a {
-                padding: 15px 0;
-                font-size: 1rem;
-                border-bottom: 1px solid #f0f0f0;
-            }
-
-            .mobile-menu a:last-child {
-                border-bottom: none;
-            }
-
-            .program-tabs {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                gap: 8px;
-                width: 100%;
-            }
-
-            .tab-btn {
-                flex: none;
-                min-width: auto;
-                width: 100%;
-                min-height: 46px;
-                padding: 10px 8px;
-                margin: 0;
-                font-size: 0.85rem;
-                white-space: nowrap;
-            }
-
-            .programs-grid {
-                grid-template-columns: repeat(2, 1fr);
+                display: flex;
+                align-items: center;
+                text-align: left;
                 gap: 15px;
-            }
-
-            .features-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 15px;
-            }
-
-            .accreditation-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 15px;
-            }
-
-            .program-content {
-                padding: 18px 12px;
-            }
-
-            .program-title {
-                font-size: 1rem;
-                line-height: 1.3;
-            }
-
-            .program-details p {
-                font-size: 0.85rem;
-                margin: 6px 0;
-            }
-
-            .specialization-badge {
-                font-size: 0.75rem;
-                padding: 5px 10px;
-            }
-
-            .hero-usps {
-                justify-content: center;
-                text-align: center;
-                gap: 8px;
-                padding: 0 5px;
-                margin-top: 20px;
-            }
-
-            .usp-item {
-                text-align: center;
-                white-space: normal;
-                overflow: visible;
-                max-width: 100%;
-                font-size: 0.8rem;
-                padding: 8px 12px;
-                line-height: 1.3;
-                flex: 1 1 100%;
-            }
-
-            .contact-float {
-                right: 10px;
-                top: 100px;
-                gap: 10px;
-            }
-
-            .contact-btn {
-                min-width: 52px;
-                min-height: 52px;
-                padding: 12px 16px;
-            }
-
-            .contact-btn i {
-                font-size: 1.3rem;
-            }
-
-            .btn {
-                min-height: 52px;
-                font-size: 1rem;
-                padding: 14px 18px;
-            }
-
-            .specialization-badge {
-                font-size: 0.8rem;
-                padding: 6px 12px;
-            }
-
-            .admission-process {
-                padding: 40px 0;
-            }
-
-            .process-timeline {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                gap: 20px 15px;
-            }
-
-            .process-step {
-                text-align: center;
-                padding: 0;
             }
 
             .step-icon {
                 width: 60px;
                 height: 60px;
-                font-size: 1.6rem;
-                margin: 0 auto 12px;
-                border-width: 4px;
+                font-size: 1.3rem;
+                margin: 0;
+                flex-shrink: 0;
+                border: 4px solid #fff;
             }
 
-            .step-icon i {
-                font-size: 1.6rem;
-            }
-
-            .step-number {
+            .step-icon::before {
                 width: 24px;
                 height: 24px;
                 font-size: 0.8rem;
-                top: -5px;
-                right: -5px;
-                border-width: 2px;
+                top: -6px;
+                right: -6px;
+                border: 2px solid #fff;
+            }
+
+            .step-content {
+                flex: 1;
             }
 
             .step-title {
-                font-size: 0.9rem;
+                font-size: 1rem;
                 margin-bottom: 6px;
-                line-height: 1.3;
             }
 
             .step-description {
-                font-size: 0.8rem;
-                line-height: 1.3;
-                padding: 0 5px;
-            }
-
-            .feature-card,
-            .accreditation-card {
-                padding: 20px 12px;
-            }
-
-            .accreditation-card h4 {
                 font-size: 0.85rem;
-                line-height: 1.3;
+                line-height: 1.4;
             }
 
-            .review-header {
-                margin-bottom: 15px;
+            .reviews-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .review-card {
+                padding: 18px;
             }
 
             .student-photo {
@@ -1590,28 +1478,397 @@
                 height: 50px;
             }
 
+            .student-info h4 {
+                font-size: 0.95rem;
+            }
+
+            .student-info p {
+                font-size: 0.8rem;
+            }
+
             .review-content p {
-                font-size: 0.9rem;
-                line-height: 1.6;
-            }
-
-            .top-label {
                 font-size: 0.85rem;
-                padding: 8px 16px;
+                line-height: 1.5;
             }
 
-            .footer {
-                padding: 30px 0;
-            }
-
-            .footer-links {
+            .process-timeline {
                 flex-direction: column;
-                gap: 15px;
-                text-align: center;
+                gap: 20px;
             }
 
-            .footer-links a {
+            .process-timeline::before {
+                display: none;
+            }
+
+            .partners-slider {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .program-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-float {
+                top: auto;
+                bottom: 20px;
+                right: 15px;
+                gap: 8px;
+                flex-direction: row;
+            }
+
+            .contact-btn {
+                padding: 0;
+                border-radius: 50%;
+                font-size: 0.85rem;
+                min-height: 44px;
+                min-width: 44px;
+                width: 44px;
+                height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .contact-btn span {
+                display: none;
+            }
+
+            .contact-btn i {
+                font-size: 1.1rem;
+                margin: 0;
+            }
+
+            /* Section headings */
+            .section h2 {
+                font-size: 1.6rem;
+                margin-bottom: 25px;
+            }
+
+            .section hr {
+                margin-bottom: 30px;
+            }
+
+            .hero-image {
+                min-height: 300px;
+            }
+
+            .hero-image img {
+                height: 300px;
+            }
+
+            .ugc-badge {
+                padding: 6px 10px;
+                gap: 6px;
+                margin-bottom: 12px;
+            }
+
+            .ugc-badge img {
+                width: 28px;
+                height: 28px;
+            }
+
+            .ugc-badge span {
+                font-size: 0.75rem;
+            }
+
+            .hero-usps {
+                gap: 10px;
+                margin-top: 20px;
+                justify-content: center;
+                grid-column: 1;
+                padding: 0 10px;
+            }
+
+            .usp-item {
+                font-size: 0.8rem;
+                padding: 8px 12px;
+                white-space: normal;
+                text-align: center;
+                line-height: 1.3;
+                flex: 1 1 auto;
+                min-width: 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .section {
+                padding: 50px 0;
+            }
+
+            .hero {
+                padding: 60px 0;
+            }
+
+            .hero-text h1 {
+                font-size: 1.6rem;
+            }
+
+            .hero-buttons .btn {
+                font-size: 0.75rem;
+                padding: 8px 12px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .university-section h2,
+            .why-choose h2,
+            .programs-section h2,
+            .admission-process h2,
+            .partners-section h2,
+            .reviews-section h2 {
+                font-size: 1.5rem;
+                line-height: 1.3;
+                margin-bottom: 25px;
+            }
+
+            .section {
+                padding: 35px 0;
+            }
+
+            .hero {
+                padding: 30px 0 40px;
+            }
+
+            .program-card {
+                margin-bottom: 10px;
+            }
+
+            .program-content {
+                padding: 12px;
+            }
+
+            .program-title {
+                font-size: 0.85rem;
+                line-height: 1.3;
+                margin-bottom: 8px;
+            }
+
+            .specialization-badge {
+                font-size: 0.65rem;
+                padding: 3px 6px;
+                margin-bottom: 8px;
+            }
+
+            .program-details p {
+                font-size: 0.7rem;
+                margin: 3px 0;
+            }
+
+            .program-details {
+                margin-bottom: 12px;
+            }
+
+            .program-card img {
+                height: 100px;
+            }
+
+            .program-card .btn {
+                padding: 6px 10px;
+                font-size: 0.7rem;
+            }
+
+            .feature-card,
+            .accreditation-card {
+                padding: 15px 12px;
+            }
+
+            .feature-card i {
+                font-size: 1.6rem;
+                margin-bottom: 12px;
+            }
+
+            .feature-card h3 {
+                font-size: 0.85rem;
+                margin-bottom: 6px;
+            }
+
+            .feature-card p {
+                font-size: 0.7rem;
+                line-height: 1.4;
+            }
+
+            .accreditation-card h4 {
+                font-size: 0.7rem;
+            }
+
+            .accreditation-card .accreditation-img {
+                width: 40px;
+                height: 40px;
+                margin-bottom: 10px;
+            }
+
+            .review-card {
+                padding: 15px;
+            }
+
+            .student-photo {
+                width: 40px;
+                height: 40px;
+            }
+
+            .review-header {
+                gap: 10px;
+                margin-bottom: 12px;
+            }
+
+            .student-info h4 {
+                font-size: 0.85rem;
+            }
+
+            .student-info p {
+                font-size: 0.7rem;
+            }
+
+            .review-content p {
+                font-size: 0.8rem;
+            }
+
+            .career-card-content h3 {
+                font-size: 0.85rem;
+            }
+
+            .career-checklist li {
+                font-size: 0.7rem;
+                margin-bottom: 8px;
+            }
+
+            .nav-container {
+                padding: 12px 15px;
+            }
+
+            body {
+                padding-top: 70px;
+            }
+
+            .contact-image img {
+                max-width: 250px;
+                height: 220px;
+            }
+
+            .hero-image {
+                min-height: 220px;
+            }
+
+            .hero-image img {
+                height: 220px;
+            }
+
+            .ugc-badge {
+                padding: 5px 8px;
+                gap: 5px;
+                margin-bottom: 10px;
+            }
+
+            .ugc-badge img {
+                width: 24px;
+                height: 24px;
+            }
+
+            .ugc-badge span {
+                font-size: 0.7rem;
+            }
+
+            /* Mobile-specific improvements */
+            .mobile-menu a {
+                padding: 15px 0;
+                border-bottom: 1px solid #f0f0f0;
+            }
+
+            .mobile-menu a:last-child {
+                border-bottom: none;
+            }
+
+            /* Better touch targets */
+            .tab-btn {
+                min-height: 40px;
+                padding: 8px 14px;
+                font-size: 0.75rem;
+            }
+
+            /* Better spacing for USP items */
+            .hero-usps {
+                justify-content: center;
+                text-align: center;
+                gap: 6px;
+                padding: 0 5px;
+            }
+
+            .usp-item {
+                text-align: center;
+                white-space: normal;
+                overflow: visible;
+                text-overflow: none;
+                max-width: 100%;
+                font-size: 0.65rem;
+                padding: 5px 8px;
+                line-height: 1.2;
+                flex: 1 1 calc(50% - 3px);
+            }
+
+            .hero-image img {
+                height: 200px;
+                border-radius: 8px;
+            }
+
+            /* Contact float adjustments */
+            .contact-float {
+                bottom: 15px;
+                right: 10px;
+            }
+
+            .contact-btn {
+                min-height: 40px;
+                min-width: 40px;
+                width: 40px;
+                height: 40px;
+                padding: 0;
+            }
+
+            .contact-btn i {
+                font-size: 1rem;
+            }
+
+            /* Admission process mobile */
+            .process-step {
+                gap: 12px;
+            }
+
+            .step-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.1rem;
+            }
+
+            .step-icon::before {
+                width: 20px;
+                height: 20px;
+                font-size: 0.7rem;
+                top: -5px;
+                right: -5px;
+            }
+
+            .step-title {
                 font-size: 0.9rem;
+            }
+
+            .step-description {
+                font-size: 0.75rem;
+            }
+
+            /* Footer mobile */
+            .footer-links a {
+                margin: 0 8px;
+                font-size: 0.8rem;
+            }
+
+            .disclaimer {
+                font-size: 0.7rem;
             }
         }
 
@@ -1876,154 +2133,91 @@
         /* Mobile responsiveness for popup */
         @media (max-width: 768px) {
             .popup-form-container {
-                width: 92%;
+                width: 95%;
                 margin: 10px;
-                max-height: 85vh;
+                max-height: 95vh;
             }
 
             .popup-form-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 12px;
+                grid-template-columns: 1fr;
+                gap: 15px;
             }
 
             .popup-content {
-                padding: 18px 15px;
+                padding: 20px;
             }
 
             .popup-header {
-                padding: 15px 18px;
+                padding: 18px 20px;
             }
 
             .popup-header h2 {
-                font-size: 1.3rem;
+                font-size: 1.4rem;
                 margin-right: 35px;
-                margin-bottom: 5px;
             }
 
             .popup-header p {
-                font-size: 0.85rem;
+                font-size: 0.9rem;
                 margin-right: 35px;
-                line-height: 1.3;
             }
 
             .popup-close {
-                top: 10px;
-                right: 10px;
-                width: 26px;
-                height: 26px;
-                font-size: 1.1rem;
+                top: 12px;
+                right: 12px;
+                width: 28px;
+                height: 28px;
+                font-size: 1.2rem;
             }
 
             .popup-phone-group {
-                flex-direction: row;
-                gap: 8px;
+                flex-direction: column;
+                gap: 12px;
             }
 
             .popup-country-code {
-                flex: 0 0 85px;
-                min-width: 85px;
-            }
-
-            .popup-phone-number {
                 flex: 1;
                 min-width: 0;
             }
 
             .popup-form-group input,
             .popup-form-group select {
-                padding: 11px 10px;
+                padding: 12px;
                 font-size: 16px; /* Prevent zoom on iOS */
-            }
-
-            .popup-form-group label {
-                font-size: 0.85rem;
-                margin-bottom: 5px;
-            }
-
-            .popup-submit-btn {
-                padding: 11px 12px;
-                font-size: 0.95rem;
-                margin-top: 10px;
             }
         }
 
         @media (max-width: 480px) {
             .popup-overlay {
-                padding: 3px;
+                padding: 5px;
             }
 
             .popup-form-container {
-                width: 98%;
-                margin: 3px;
-                border-radius: 8px;
-                max-height: 90vh;
+                width: 100%;
+                margin: 5px;
+                border-radius: 10px;
             }
 
             .popup-header {
-                padding: 12px 15px;
-                border-radius: 8px 8px 0 0;
+                padding: 15px;
+                border-radius: 10px 10px 0 0;
             }
 
             .popup-header h2 {
-                font-size: 1.2rem;
-                margin-right: 28px;
-                margin-bottom: 3px;
+                font-size: 1.3rem;
+                margin-right: 30px;
             }
 
             .popup-header p {
-                font-size: 0.8rem;
-                margin-right: 28px;
-                line-height: 1.2;
-            }
-
-            .popup-close {
-                top: 8px;
-                right: 8px;
-                width: 24px;
-                height: 24px;
-                font-size: 1rem;
+                font-size: 0.85rem;
+                margin-right: 30px;
             }
 
             .popup-content {
-                padding: 12px;
+                padding: 15px;
             }
 
             .popup-form-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 8px;
-                margin-bottom: 12px;
-            }
-
-            .popup-phone-group {
-                gap: 6px;
-            }
-
-            .popup-country-code {
-                flex: 0 0 75px;
-                min-width: 75px;
-            }
-
-            .popup-form-group input,
-            .popup-form-group select {
-                padding: 10px 8px;
-                font-size: 16px;
-            }
-
-            .popup-form-group label {
-                font-size: 0.8rem;
-                margin-bottom: 4px;
-            }
-
-            .popup-submit-btn {
-                padding: 10px;
-                font-size: 0.9rem;
-                margin-top: 8px;
-            }
-
-            .popup-offer-badge {
-                font-size: 0.75rem;
-                padding: 5px 10px;
-                margin-bottom: 8px;
+                gap: 12px;
             }
 
             .popup-offer-badge {
@@ -2080,16 +2274,16 @@
 
     <!-- Top deadline label (non-sticky) -->
     <div class="top-label-wrapper">
-        <div class="top-label">Admissions closing soon!</div>
+        <div class="top-label">January Batch 2026 - Admissions open</div>
     </div>
 
     <!-- Floating contact buttons (Call & WhatsApp) -->
     <div class="contact-float" aria-hidden="false">
-        <a href="tel:+91-9311381814" class="contact-btn call-btn" title="Call 9311381814">
+        <a href="tel:+91-9266530366" class="contact-btn call-btn" title="Call 9266530366">
             <i class="fas fa-phone"></i>
             <span>Call Now</span>
         </a>
-        <a href="https://wa.me/919311381814" target="_blank" rel="noopener noreferrer" class="contact-btn wa-btn" title="WhatsApp 9311381814">
+        <a href="https://wa.me/919266530366" target="_blank" rel="noopener noreferrer" class="contact-btn wa-btn" title="WhatsApp 9266530366">
             <i class="fab fa-whatsapp"></i>
             <span>WhatsApp</span>
         </a>
@@ -2100,15 +2294,21 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
+                    <div class="ugc-badge">
+                        <img src="assets/images/ugc-logo.svg" alt="UGC Logo">
+                        <span>UGC Entitled</span>
+                    </div>
                     <h1>Online Degree From Amity Online University</h1>
                     <p>India's #1 Choice for Online Degree Programs</p>
                     <div class="hero-buttons">
-                        <a href="application-form" class="btn btn-primary">Download Brochure</a>
+                        <button class="btn btn-primary" id="downloadBrochureBtn">Download Brochure</button>
                         <a href="application-form" class="btn btn-primary">Apply Now</a>
                     </div>
                 </div>
                 <div class="hero-image">
-                    <img src="assets/images/campus.png" alt="Amity University Campus" onerror="this.src='https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'">
+                    <img src="assets/images/campus.png" alt="Amity University Campus" class="active" onerror="this.src='https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'">
+                    <img src="assets/images/university2.jpg" alt="Amity University Campus 2">
+                    <img src="assets/images/university3.JPG" alt="Amity University Campus 3">
                 </div>
                 <div class="hero-usps" aria-hidden="false">
                     <span class="usp-item">Interview preparation &amp; mock interviews</span>
@@ -2121,11 +2321,12 @@
     </section>
 
     <!-- Programs Section -->
-    <section class="programs-section section" id="programs" style="padding-top: 40px;">
+    <section class="programs-section section" id="programs">
         <div class="container">
-            <h2>Our Online Programs</h2>
+            <h2>Online Master's & Bachelor's Program</h2>
             <div class="program-tabs">
                 <button class="tab-btn active" data-filter="all">All Courses</button>
+                <button class="tab-btn" data-filter="popular">Popular Courses</button>
                 <button class="tab-btn" data-filter="ug">UG Courses</button>
                 <button class="tab-btn" data-filter="pg">PG Courses</button>
             </div>
@@ -2138,12 +2339,12 @@
                         <div class="program-details">
                             <p><strong>Eligibility:</strong> Bachelor's Degree</p>
                             <p><strong>Duration:</strong> 2 Years</p>
-                            <p><strong>Fees:</strong> No Cost EMI available</p>
+                            <p><strong>Fees:</strong> No Cost EMI & Scholarship available</p>
                         </div>
                         <a href="application-form" class="btn btn-primary">Apply Now</a>
                     </div>
                 </div>
-                <div class="program-card" data-category="pg popular">
+                <div class="program-card" data-category="pg">
                     <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="M.Com Program">
                     <div class="program-content">
                         <span class="specialization-badge">8+ Specializations</span>
@@ -2151,7 +2352,7 @@
                         <div class="program-details">
                             <p><strong>Eligibility:</strong> B.Com/BBA</p>
                             <p><strong>Duration:</strong> 2 Years</p>
-                            <p><strong>Fees:</strong> No Cost EMI available</p>
+                            <p><strong>Fees:</strong> No Cost EMI & Scholarship available</p>
                         </div>
                         <a href="application-form" class="btn btn-primary">Apply Now</a>
                     </div>
@@ -2164,7 +2365,7 @@
                         <div class="program-details">
                             <p><strong>Eligibility:</strong> BCA/B.Sc IT</p>
                             <p><strong>Duration:</strong> 2 Years</p>
-                            <p><strong>Fees:</strong> No Cost EMI available</p>
+                            <p><strong>Fees:</strong> No Cost EMI & Scholarship available</p>
                         </div>
                         <a href="application-form" class="btn btn-primary">Apply Now</a>
                     </div>
@@ -2177,7 +2378,7 @@
                         <div class="program-details">
                             <p><strong>Eligibility:</strong> B.Sc in relevant field</p>
                             <p><strong>Duration:</strong> 2 Years</p>
-                            <p><strong>Fees:</strong> No Cost EMI available</p>
+                            <p><strong>Fees:</strong> No Cost EMI & Scholarship available</p>
                         </div>
                         <a href="application-form" class="btn btn-primary">Apply Now</a>
                     </div>
@@ -2190,7 +2391,7 @@
                         <div class="program-details">
                             <p><strong>Eligibility:</strong> Bachelor's Degree</p>
                             <p><strong>Duration:</strong> 2 Years</p>
-                            <p><strong>Fees:</strong> No Cost EMI available</p>
+                            <p><strong>Fees:</strong> No Cost EMI & Scholarship available</p>
                         </div>
                         <a href="application-form" class="btn btn-primary">Apply Now</a>
                     </div>
@@ -2203,7 +2404,7 @@
                         <div class="program-details">
                             <p><strong>Eligibility:</strong> 12th Pass</p>
                             <p><strong>Duration:</strong> 3 Years</p>
-                            <p><strong>Fees:</strong> No Cost EMI available</p>
+                            <p><strong>Fees:</strong> No Cost EMI & Scholarship available</p>
                         </div>
                         <a href="application-form" class="btn btn-primary">Apply Now</a>
                     </div>
@@ -2216,7 +2417,7 @@
                         <div class="program-details">
                             <p><strong>Eligibility:</strong> 12th Pass</p>
                             <p><strong>Duration:</strong> 3 Years</p>
-                            <p><strong>Fees:</strong> No Cost EMI available</p>
+                            <p><strong>Fees:</strong> No Cost EMI & Scholarship available</p>
                         </div>
                         <a href="application-form" class="btn btn-primary">Apply Now</a>
                     </div>
@@ -2229,7 +2430,7 @@
                         <div class="program-details">
                             <p><strong>Eligibility:</strong> 12th Pass</p>
                             <p><strong>Duration:</strong> 3 Years</p>
-                            <p><strong>Fees:</strong> No Cost EMI available</p>
+                            <p><strong>Fees:</strong> No Cost EMI & Scholarship available</p>
                         </div>
                         <a href="application-form" class="btn btn-primary">Apply Now</a>
                     </div>
@@ -2238,8 +2439,177 @@
         </div>
     </section>
 
+    <!-- Admission Process -->
+    <section class="admission-process section" id="admissions">
+        <div class="container">
+            <h2>Admission Process</h2>
+            <div class="process-timeline">
+                <div class="process-step">
+                    <div class="step-icon" data-step="1">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                    <div class="step-content">
+                        <h3 class="step-title">Register</h3>
+                        <p class="step-description">Create your account and start your journey</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-icon" data-step="2">
+                        <i class="fas fa-edit"></i>
+                    </div>
+                    <div class="step-content">
+                        <h3 class="step-title">Fill Details</h3>
+                        <p class="step-description">Complete your application form with accurate information</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-icon" data-step="3">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                    </div>
+                    <div class="step-content">
+                        <h3 class="step-title">Upload Documents</h3>
+                        <p class="step-description">Submit all required academic documents</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-icon" data-step="4">
+                        <i class="fas fa-paper-plane"></i>
+                    </div>
+                    <div class="step-content">
+                        <h3 class="step-title">Submit Application</h3>
+                        <p class="step-description">Review and submit your completed application</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Holistic Career Services -->
+    <section class="career-services-section section">
+        <div class="container">
+            <h2>Holistic Career Services</h2>
+            <hr>
+            <div class="career-carousel-wrapper">
+                <div class="career-carousel-container" id="careerCarousel">
+                    <div class="career-slide">
+                        <div class="career-card">
+                            <img src="assets/images/career-service-1.webp" alt="Career exploration tools" class="career-card-img" onerror="this.src='https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'">
+                            <div class="career-card-content">
+                                <h3>Career exploration tools</h3>
+                                <ul class="career-checklist">
+                                    <li>
+                                        <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M3.825 9.5L0 5.68956L0.859396 4.83343L3.825 7.78775L11.1406 0.5L12 1.35612L3.825 9.5Z" fill="#1A325D"></path>
+                                        </svg>
+                                        Assessing your interests and strengths
+                                    </li>
+                                    <li>
+                                        <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M3.825 9.5L0 5.68956L0.859396 4.83343L3.825 7.78775L11.1406 0.5L12 1.35612L3.825 9.5Z" fill="#1A325D"></path>
+                                        </svg>
+                                        Exploring different career options and pathways
+                                    </li>
+                                    <li>
+                                        <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M3.825 9.5L0 5.68956L0.859396 4.83343L3.825 7.78775L11.1406 0.5L12 1.35612L3.825 9.5Z" fill="#1A325D"></path>
+                                        </svg>
+                                        Identifying your passion and potential
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="career-slide">
+                        <div class="career-card">
+                            <img src="assets/images/career-service-2.webp" alt="Resume/CV assistance" class="career-card-img" onerror="this.src='https://images.unsplash.com/photo-1586339949916-3e9457bef6d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'">
+                            <div class="career-card-content">
+                                <h3>Resume/CV assistance</h3>
+                                <ul class="career-checklist">
+                                    <li>
+                                        <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M3.825 9.5L0 5.68956L0.859396 4.83343L3.825 7.78775L11.1406 0.5L12 1.35612L3.825 9.5Z" fill="#1A325D"></path>
+                                        </svg>
+                                        Crafting professional resumes and CVs
+                                    </li>
+                                    <li>
+                                        <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M3.825 9.5L0 5.68956L0.859396 4.83343L3.825 7.78775L11.1406 0.5L12 1.35612L3.825 9.5Z" fill="#1A325D"></path>
+                                        </svg>
+                                        Customizing application for specific industries
+                                    </li>
+                                    <li>
+                                        <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M3.825 9.5L0 5.68956L0.859396 4.83343L3.825 7.78775L11.1406 0.5L12 1.35612L3.825 9.5Z" fill="#1A325D"></path>
+                                        </svg>
+                                        Highlighting your skills and achievements effectively
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="career-slide">
+                        <div class="career-card">
+                            <img src="assets/images/career-service-3.webp" alt="Virtual job search support" class="career-card-img" onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'">
+                            <div class="career-card-content">
+                                <h3>Virtual job search support</h3>
+                                <ul class="career-checklist">
+                                    <li>
+                                        <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M3.825 9.5L0 5.68956L0.859396 4.83343L3.825 7.78775L11.1406 0.5L12 1.35612L3.825 9.5Z" fill="#1A325D"></path>
+                                        </svg>
+                                        Guiding through the online application process
+                                    </li>
+                                    <li>
+                                        <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M3.825 9.5L0 5.68956L0.859396 4.83343L3.825 7.78775L11.1406 0.5L12 1.35612L3.825 9.5Z" fill="#1A325D"></path>
+                                        </svg>
+                                        Networking support via virtual events and platforms
+                                    </li>
+                                    <li>
+                                        <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M3.825 9.5L0 5.68956L0.859396 4.83343L3.825 7.78775L11.1406 0.5L12 1.35612L3.825 9.5Z" fill="#1A325D"></path>
+                                        </svg>
+                                        Preparing for virtual interviews to establish a professional online presence
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="career-slide">
+                        <div class="career-card">
+                            <img src="assets/images/career-service-4.webp" alt="Career counselling & advising" class="career-card-img" onerror="this.src='https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'">
+                            <div class="career-card-content">
+                                <h3>Career counselling & advising</h3>
+                                <ul class="career-checklist">
+                                    <li>
+                                        <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M3.825 9.5L0 5.68956L0.859396 4.83343L3.825 7.78775L11.1406 0.5L12 1.35612L3.825 9.5Z" fill="#1A325D"></path>
+                                        </svg>
+                                        1-on-1 sessions with experienced counsellors
+                                    </li>
+                                    <li>
+                                        <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M3.825 9.5L0 5.68956L0.859396 4.83343L3.825 7.78775L11.1406 0.5L12 1.35612L3.825 9.5Z" fill="#1A325D"></path>
+                                        </svg>
+                                        Personalized career assessments and goal setting
+                                    </li>
+                                    <li>
+                                        <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M3.825 9.5L0 5.68956L0.859396 4.83343L3.825 7.78775L11.1406 0.5L12 1.35612L3.825 9.5Z" fill="#1A325D"></path>
+                                        </svg>
+                                        Guidance on making informed decisions
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- University Section -->
-    <section class="university-section section" id="about" style="padding-top: 40px;">
+    <section class="university-section section" id="about">
         <div class="container">
             <h2>Amity Online University</h2>
             <p>How about getting a degree from the top ranked university?</p>
@@ -2334,47 +2704,6 @@
         </div>
     </section>
 
-    <!-- Admission Process -->
-    <section class="admission-process section" id="admissions" style="padding-top: 40px;">
-        <div class="container">
-            <h2>Admission Process</h2>
-            <div class="process-timeline">
-                <div class="process-step">
-                    <div class="step-icon">
-                        <span class="step-number">1</span>
-                        <i class="fas fa-user-plus"></i>
-                    </div>
-                    <h3 class="step-title">Register</h3>
-                    <p class="step-description">Create your account and start your journey</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-icon">
-                        <span class="step-number">2</span>
-                        <i class="fas fa-edit"></i>
-                    </div>
-                    <h3 class="step-title">Fill Details</h3>
-                    <p class="step-description">Complete your application form with accurate information</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-icon">
-                        <span class="step-number">3</span>
-                        <i class="fas fa-cloud-upload-alt"></i>
-                    </div>
-                    <h3 class="step-title">Upload Documents</h3>
-                    <p class="step-description">Submit all required academic documents</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-icon">
-                        <span class="step-number">4</span>
-                        <i class="fas fa-paper-plane"></i>
-                    </div>
-                    <h3 class="step-title">Submit Application</h3>
-                    <p class="step-description">Review and submit your completed application</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Partners Section -->
     <section class="partners-section section">
         <div class="container">
@@ -2418,7 +2747,7 @@
     </section>
 
     <!-- Reviews Section -->
-    <section class="reviews-section section" style="padding-top: 40px;">
+    <section class="reviews-section section">
         <div class="container">
             <h2>Open & Honest Reviews by our Learners</h2>
             <div class="reviews-grid">
@@ -2552,7 +2881,8 @@
                 <div class="contact-text">
                     <h2>Connect for any queries</h2>
                     <p>Amity Online University</p>
-                    <a href="tel:+91-9311381814" class="btn btn-primary">Call Now</a>
+                    <p style="margin-top: 15px;"><strong>Email:</strong> <a href="mailto:contact@amityonlineadmission.in" style="color: #FFC107; text-decoration: none;">contact@amityonlineadmission.in</a></p>
+                    <a href="tel:+91-9266530366" class="btn btn-primary">Call Now</a>
                 </div>
                 <div class="contact-image">
                     <img src="assets/images/contact-page.png" alt="University Representative" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'">
@@ -2573,6 +2903,8 @@
                     <a href="#terms">Terms & Conditions</a>
                     <a href="#refund">Refund Policy</a>
                     <a href="#contact">Contact Us</a>
+                    <span style="color: #666; margin: 0 10px;">|</span>
+                    <a href="mailto:contact@amityonlineadmission.in">contact@amityonlineadmission.in</a>
                 </div>
                 <div class="copyright">
                     <p>&copy; 2025 Amity Online University. All rights reserved.</p>
@@ -2582,6 +2914,170 @@
     </footer>
 
     <!-- Popup Form -->
+    <!-- Brochure Download Popup -->
+    <div class="popup-overlay" id="brochurePopupOverlay">
+        <div class="popup-form-container">
+            <div class="popup-header">
+                <button class="popup-close" id="brochurePopupClose">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="popup-offer-badge">
+                    <i class="fas fa-download" style="margin-right: 5px;"></i>
+                    Download Free Brochure
+                </div>
+                <h2>Get Complete Program Details</h2>
+                <p>Fill the form below to download our comprehensive brochure with all course information</p>
+            </div>
+
+            <div class="popup-content">
+                <form id="brochureApplicationForm">
+                    <div class="popup-form-grid">
+                        <div class="popup-form-group">
+                            <label for="brochureFirstName">First Name <span class="popup-required">*</span></label>
+                            <input type="text" id="brochureFirstName" name="firstName" required>
+                            <div class="popup-error-message">Please enter your first name</div>
+                        </div>
+
+                        <div class="popup-form-group">
+                            <label for="brochureLastName">Last Name <span class="popup-required">*</span></label>
+                            <input type="text" id="brochureLastName" name="lastName" required>
+                            <div class="popup-error-message">Please enter your last name</div>
+                        </div>
+
+                        <div class="popup-form-group full-width">
+                            <label for="brochureEmail">Email Address <span class="popup-required">*</span></label>
+                            <input type="email" id="brochureEmail" name="email" required>
+                            <div class="popup-error-message">Please enter a valid email address</div>
+                        </div>
+
+                        <div class="popup-form-group full-width">
+                            <label for="brochurePhone">Phone Number <span class="popup-required">*</span></label>
+                            <div class="popup-phone-group">
+                                <select id="brochureCountryCode" name="countryCode" class="popup-country-code" required>
+                                    <option value="+91">+91 (India)</option>
+                                    <option value="+1">+1 (USA)</option>
+                                    <option value="+1">+1 (Canada)</option>
+                                    <option value="+44">+44 (UK)</option>
+                                    <option value="+61">+61 (Australia)</option>
+                                    <option value="+65">+65 (Singapore)</option>
+                                    <option value="+971">+971 (UAE)</option>
+                                    <option value="+966">+966 (Saudi Arabia)</option>
+                                    <option value="+974">+974 (Qatar)</option>
+                                    <option value="+965">+965 (Kuwait)</option>
+                                    <option value="+968">+968 (Oman)</option>
+                                    <option value="+973">+973 (Bahrain)</option>
+                                </select>
+                                <input type="tel" id="brochurePhoneNumber" name="phoneNumber" 
+                                       placeholder="Enter 10-digit number" 
+                                       pattern="[0-9]{10}" 
+                                       maxlength="10" 
+                                       class="popup-phone-number" required>
+                            </div>
+                            <div class="popup-error-message">Please enter a valid 10-digit phone number</div>
+                        </div>
+
+                        <div class="popup-form-group">
+                            <label for="brochureCourse">Select Course <span class="popup-required">*</span></label>
+                            <select id="brochureCourse" name="course" required>
+                                <option value="">Choose your course</option>
+                                <optgroup label="Master's Programs">
+                                    <option value="mba">Master of Business Administration (MBA)</option>
+                                    <option value="mcom">Master of Commerce (M.Com)</option>
+                                    <option value="mca">Master of Computer Applications (MCA)</option>
+                                    <option value="msc-it">Master of Science in Information Technology</option>
+                                    <option value="msc-cs">Master of Science in Computer Science</option>
+                                    <option value="msc-ds">Master of Science in Data Science</option>
+                                    <option value="ma-journalism">Master of Arts in Journalism & Mass Communication</option>
+                                    <option value="ma-english">Master of Arts in English</option>
+                                    <option value="ma-psychology">Master of Arts in Psychology</option>
+                                    <option value="ma-economics">Master of Arts in Economics</option>
+                                </optgroup>
+                                <optgroup label="Bachelor's Programs">
+                                    <option value="bba">Bachelor of Business Administration (BBA)</option>
+                                    <option value="bca">Bachelor of Computer Applications (BCA)</option>
+                                    <option value="bcom">Bachelor of Commerce (B.Com)</option>
+                                    <option value="ba">Bachelor of Arts (BA)</option>
+                                    <option value="ba-english">Bachelor of Arts in English</option>
+                                    <option value="ba-psychology">Bachelor of Arts in Psychology</option>
+                                    <option value="ba-economics">Bachelor of Arts in Economics</option>
+                                    <option value="bsc-it">Bachelor of Science in Information Technology</option>
+                                    <option value="bsc-cs">Bachelor of Science in Computer Science</option>
+                                </optgroup>
+                            </select>
+                            <div class="popup-error-message">Please select a course</div>
+                        </div>
+
+                        <div class="popup-form-group">
+                            <label for="brochureState">Select State <span class="popup-required">*</span></label>
+                            <select id="brochureState" name="state" required>
+                                <option value="">Choose your state</option>
+                                <option value="andhra-pradesh">Andhra Pradesh</option>
+                                <option value="arunachal-pradesh">Arunachal Pradesh</option>
+                                <option value="assam">Assam</option>
+                                <option value="bihar">Bihar</option>
+                                <option value="chhattisgarh">Chhattisgarh</option>
+                                <option value="goa">Goa</option>
+                                <option value="gujarat">Gujarat</option>
+                                <option value="haryana">Haryana</option>
+                                <option value="himachal-pradesh">Himachal Pradesh</option>
+                                <option value="jharkhand">Jharkhand</option>
+                                <option value="karnataka">Karnataka</option>
+                                <option value="kerala">Kerala</option>
+                                <option value="madhya-pradesh">Madhya Pradesh</option>
+                                <option value="maharashtra">Maharashtra</option>
+                                <option value="manipur">Manipur</option>
+                                <option value="meghalaya">Meghalaya</option>
+                                <option value="mizoram">Mizoram</option>
+                                <option value="nagaland">Nagaland</option>
+                                <option value="odisha">Odisha</option>
+                                <option value="punjab">Punjab</option>
+                                <option value="rajasthan">Rajasthan</option>
+                                <option value="sikkim">Sikkim</option>
+                                <option value="tamil-nadu">Tamil Nadu</option>
+                                <option value="telangana">Telangana</option>
+                                <option value="tripura">Tripura</option>
+                                <option value="uttar-pradesh">Uttar Pradesh</option>
+                                <option value="uttarakhand">Uttarakhand</option>
+                                <option value="west-bengal">West Bengal</option>
+                                <optgroup label="Union Territories">
+                                    <option value="andaman-nicobar">Andaman and Nicobar Islands</option>
+                                    <option value="chandigarh">Chandigarh</option>
+                                    <option value="dadra-nagar-haveli">Dadra and Nagar Haveli and Daman and Diu</option>
+                                    <option value="delhi">Delhi</option>
+                                    <option value="jammu-kashmir">Jammu and Kashmir</option>
+                                    <option value="ladakh">Ladakh</option>
+                                    <option value="lakshadweep">Lakshadweep</option>
+                                    <option value="puducherry">Puducherry</option>
+                                </optgroup>
+                                <optgroup label="International">
+                                    <option value="other">Other (Outside India)</option>
+                                </optgroup>
+                            </select>
+                            <div class="popup-error-message">Please select your state</div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="popup-submit-btn" id="brochureSubmitBtn" disabled>
+                        <div class="popup-btn-content">
+                            <div class="popup-loading-spinner" id="brochureLoadingSpinner"></div>
+                            <span id="brochureBtnText">Download Brochure</span>
+                        </div>
+                    </button>
+
+                    <div class="popup-success-message" id="brochureSuccessMessage">
+                        <i class="fas fa-check-circle" style="margin-right: 10px;"></i>
+                        <strong>Success!</strong> Your brochure is being downloaded. Thank you!
+                    </div>
+
+                    <p style="font-size: 0.85rem; color: #666; margin-top: 15px; text-align: center;">
+                        <i class="fas fa-lock" style="margin-right: 5px;"></i>
+                        Your information is secure and will only be used for admission purposes
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <div class="popup-overlay" id="popupOverlay">
         <div class="popup-form-container">
             <div class="popup-header">
@@ -2746,6 +3242,21 @@
     </div>
 
     <script>
+        // Hero image slideshow
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.hero-image img:not(.ugc-badge img)');
+        
+        function showNextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+        
+        // Change slide every 3 seconds
+        if (slides.length > 1) {
+            setInterval(showNextSlide, 3000);
+        }
+
         // Navbar scroll effect
         window.addEventListener('scroll', function() {
             const navbar = document.getElementById('navbar');
@@ -2805,24 +3316,26 @@
             });
         });
 
-        // Program tabs filtering functionality
+        // Course filtering functionality
         document.querySelectorAll('.tab-btn').forEach(btn => {
             btn.addEventListener('click', function() {
-                // Update active tab
+                // Update active button
                 document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
                 this.classList.add('active');
                 
-                // Get filter category
+                // Get filter value
                 const filter = this.getAttribute('data-filter');
+                
+                // Get all program cards
                 const programCards = document.querySelectorAll('.program-card');
                 
-                // Filter program cards
+                // Filter cards based on selection
                 programCards.forEach(card => {
-                    const category = card.getAttribute('data-category');
+                    const categories = card.getAttribute('data-category');
                     
                     if (filter === 'all') {
                         card.style.display = 'block';
-                    } else if (category && category.includes(filter)) {
+                    } else if (categories && categories.includes(filter)) {
                         card.style.display = 'block';
                     } else {
                         card.style.display = 'none';
@@ -3064,7 +3577,8 @@
                 // Redirect to thank you page after 3 seconds
                 setTimeout(() => {
                     hidePopupForm();
-                    window.location.href = 'thank-you';
+                    const timestamp = Date.now();
+                    window.location.href = `thank-you?id=${applicationId}&t=${timestamp}`;
                 }, 3000);
             })
             .catch((error) => {
@@ -3198,6 +3712,275 @@
         // Prevent popup from showing if user has already submitted main form
         if (sessionStorage.getItem('formSubmitted') === 'true') {
             popupShown = true; // Disable popup
+        }
+
+        // ========== BROCHURE POPUP FUNCTIONALITY ==========
+        
+        // Show brochure popup when download button is clicked
+        document.getElementById('downloadBrochureBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            const brochurePopup = document.getElementById('brochurePopupOverlay');
+            brochurePopup.classList.add('show');
+        });
+
+        // Close brochure popup functionality
+        document.getElementById('brochurePopupClose').addEventListener('click', hideBrochurePopupForm);
+        document.getElementById('brochurePopupOverlay').addEventListener('click', function(e) {
+            if (e.target === this) {
+                hideBrochurePopupForm();
+            }
+        });
+
+        function hideBrochurePopupForm() {
+            const popup = document.getElementById('brochurePopupOverlay');
+            popup.classList.remove('show');
+        }
+
+        // Enable/disable download button based on form completion
+        const brochureForm = document.getElementById('brochureApplicationForm');
+        const brochureSubmitBtn = document.getElementById('brochureSubmitBtn');
+        const brochureInputs = brochureForm.querySelectorAll('input[required], select[required]');
+
+        function checkBrochureFormCompletion() {
+            let allFilled = true;
+            brochureInputs.forEach(input => {
+                if (input.type === 'email') {
+                    if (!input.value || !input.value.includes('@')) {
+                        allFilled = false;
+                    }
+                } else if (input.type === 'tel') {
+                    if (!input.value || input.value.length !== 10) {
+                        allFilled = false;
+                    }
+                } else if (!input.value) {
+                    allFilled = false;
+                }
+            });
+            
+            brochureSubmitBtn.disabled = !allFilled;
+            if (allFilled) {
+                brochureSubmitBtn.style.opacity = '1';
+                brochureSubmitBtn.style.cursor = 'pointer';
+            } else {
+                brochureSubmitBtn.style.opacity = '0.6';
+                brochureSubmitBtn.style.cursor = 'not-allowed';
+            }
+        }
+
+        brochureInputs.forEach(input => {
+            input.addEventListener('input', checkBrochureFormCompletion);
+            input.addEventListener('change', checkBrochureFormCompletion);
+        });
+
+        // Phone number validation for brochure form
+        document.getElementById('brochurePhoneNumber').addEventListener('input', function(e) {
+            this.value = this.value.replace(/[^0-9]/g, '');
+        });
+
+        // Brochure form validation
+        brochureForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            if (validateBrochureForm()) {
+                submitBrochureForm();
+            }
+        });
+
+        // Helper validation functions for brochure form
+        function isValidEmail(email) {
+            if (!email) return false;
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function isValidPhone(phone) {
+            if (!phone) return false;
+            const phoneRegex = /^[0-9]{10}$/;
+            return phoneRegex.test(phone);
+        }
+
+        function validateBrochureForm() {
+            let isValid = true;
+            const formGroups = document.querySelectorAll('#brochureApplicationForm .popup-form-group');
+            
+            formGroups.forEach(group => {
+                const input = group.querySelector('input, select');
+                if (!input) return;
+                
+                group.classList.remove('error');
+                
+                if (input.hasAttribute('required') && !input.value) {
+                    group.classList.add('error');
+                    isValid = false;
+                } else if (input.type === 'email' && !isValidEmail(input.value)) {
+                    group.classList.add('error');
+                    isValid = false;
+                } else if (input.type === 'tel' && !isValidPhone(input.value)) {
+                    group.classList.add('error');
+                    isValid = false;
+                }
+            });
+            
+            return isValid;
+        }
+
+        function submitBrochureForm() {
+            const submitBtn = document.getElementById('brochureSubmitBtn');
+            const loadingSpinner = document.getElementById('brochureLoadingSpinner');
+            const btnText = document.getElementById('brochureBtnText');
+            const successMessage = document.getElementById('brochureSuccessMessage');
+
+            submitBtn.disabled = true;
+            loadingSpinner.style.display = 'block';
+            btnText.textContent = 'Processing...';
+
+            // Get form data
+            const formData = new FormData(document.getElementById('brochureApplicationForm'));
+            
+            // Add timestamp and application ID
+            const applicationId = 'BRO' + Date.now().toString().slice(-6) + Math.floor(Math.random() * 1000).toString().padStart(3, '0');
+            formData.append('applicationId', applicationId);
+            formData.append('timestamp', new Date().toLocaleString());
+            formData.append('fullPhone', formData.get('countryCode') + formData.get('phoneNumber'));
+            formData.append('source', 'brochure-download');
+
+            // Google Apps Script URL
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbzHeZALb_JCI58cJIjKpH-moJcioAGsbR0PWrvT1UvbB8hAKRFisYFXmKBTJyrjFuCG9A/exec';
+            
+            // Submit to Google Sheets
+            fetch(scriptURL, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(responseText => {
+                console.log('Brochure form response:', responseText);
+                
+                // Show success message (no redirect for brochure download)
+                successMessage.innerHTML = `
+                    <i class="fas fa-check-circle" style="margin-right: 10px; color: #28a745;"></i>
+                    <strong>Success!</strong> Your brochure is being downloaded. Thank you!
+                `;
+                successMessage.style.display = 'block';
+                document.getElementById('brochureApplicationForm').style.display = 'none';
+                
+                // Download brochure immediately
+                setTimeout(() => {
+                    downloadBrochure();
+                    
+                    // Close popup after download starts
+                    setTimeout(() => {
+                        hideBrochurePopupForm();
+                        // Reset form after closing
+                        setTimeout(() => {
+                            document.getElementById('brochureApplicationForm').reset();
+                            document.getElementById('brochureApplicationForm').style.display = 'block';
+                            successMessage.style.display = 'none';
+                            submitBtn.disabled = false;
+                            loadingSpinner.style.display = 'none';
+                            btnText.textContent = 'Download Brochure';
+                        }, 500);
+                    }, 2000);
+                }, 500);
+            })
+            .catch(error => {
+                console.error('Error!', error.message);
+                alert('There was an error submitting your request. Please try again.');
+                
+                submitBtn.disabled = false;
+                loadingSpinner.style.display = 'none';
+                btnText.textContent = 'Download Brochure';
+            });
+        }
+
+        function downloadBrochure() {
+            // Get the selected course from the form
+            const selectedCourse = document.getElementById('brochureCourse').value;
+            
+            // Map course values to PDF filenames
+            const brochureMap = {
+                // Master's Programs
+                'mba': 'assets/brochures/AMITY ONLINE-ONLINE MBA-MBA - General Management.pdf',
+                'mcom': 'assets/brochures/AMITY ONLINE-M.COM-Master of Commerce_MCOM.pdf',
+                'mca': 'assets/brochures/AMITY ONLINE-MCA-Master of Computer Applications.pdf',
+                'msc-it': 'assets/brochures/AMITY ONLINE-M.SC-M.sc - IT.pdf',
+                'msc-cs': 'assets/brochures/AMITY ONLINE-M.SC-M.sc - IT.pdf',
+                'msc-ds': 'assets/brochures/AMITY ONLINE-M.SC-MSC DATA SCIENCE (Rajasthan).pdf',
+                'ma': 'assets/brochures/AMITY ONLINE-MA-Master_of_Arts_MA.pdf',
+                'ma-english': 'assets/brochures/AMITY ONLINE-MA-Master_of_Arts_MA.pdf',
+                'ma-journalism': 'assets/brochures/AMITY ONLINE-MA-MASTER OF ARTS - JOURNALISM AND MASS COMMUNICATION.pdf',
+                'ma-psychology': 'assets/brochures/AMITY ONLINE-MA-MA PHYSCHOLOGY (Rajasthan).pdf',
+                'ma-economics': 'assets/brochures/AMITY ONLINE-MA-Master_of_Arts_MA.pdf',
+                
+                // Bachelor's Programs
+                'bba': 'assets/brochures/AMITY ONLINE-BBA-BBA_2023.pdf',
+                'bca': 'assets/brochures/AMITY ONLINE-BCA-BCA Brochure.pdf',
+                'bcom': 'assets/brochures/AMITY ONLINE-B.COM-B.Com.pdf',
+                'ba': 'assets/brochures/AMITY ONLINE-BA-B.A. - English.pdf',
+                'ba-english': 'assets/brochures/AMITY ONLINE-BA-B.A. - English.pdf',
+                'ba-psychology': 'assets/brochures/AMITY ONLINE-BA-B.A. - English.pdf',
+                'ba-economics': 'assets/brochures/AMITY ONLINE-BA-B.A. - Economics (1).pdf',
+                'bsc-it': 'assets/brochures/AMITY ONLINE-B.SC IT-B.sc - IT.pdf',
+                'bsc-cs': 'assets/brochures/AMITY ONLINE-B.SC IT-B.sc - IT.pdf'
+            };
+            
+            // Get the brochure path for the selected course
+            const brochurePath = brochureMap[selectedCourse];
+            
+            if (brochurePath) {
+                // Create a temporary link element
+                const link = document.createElement('a');
+                link.href = brochurePath;
+                link.download = brochurePath.split('/').pop(); // Get filename from path
+                link.target = '_blank';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                console.log('Brochure downloaded:', brochurePath);
+            } else {
+                console.error('No brochure found for selected course:', selectedCourse);
+                alert('Brochure for this course is currently unavailable. Please contact us for more information.');
+            }
+        }
+
+        // Real-time validation for brochure form
+        const brochureFormInputs = document.querySelectorAll('#brochureApplicationForm input, #brochureApplicationForm select');
+        brochureFormInputs.forEach(input => {
+            input.addEventListener('blur', function() {
+                validateBrochureField(this);
+            });
+
+            input.addEventListener('input', function() {
+                if (this.parentElement.parentElement.classList.contains('error')) {
+                    validateBrochureField(this);
+                }
+            });
+        });
+
+        function validateBrochureField(field) {
+            const formGroup = field.closest('.popup-form-group');
+            
+            if (!formGroup) return true;
+            
+            formGroup.classList.remove('error');
+            
+            if (field.hasAttribute('required') && !field.value) {
+                formGroup.classList.add('error');
+                return false;
+            }
+            
+            if (field.type === 'email' && field.value && !isValidEmail(field.value)) {
+                formGroup.classList.add('error');
+                return false;
+            }
+            
+            if (field.type === 'tel' && field.value && !isValidPhone(field.value)) {
+                formGroup.classList.add('error');
+                return false;
+            }
+            
+            return true;
         }
     </script>
 </body>
