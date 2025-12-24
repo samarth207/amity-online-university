@@ -3526,33 +3526,34 @@
             // Get form data
             const formData = new FormData(document.getElementById('popupApplicationForm'));
             
-            // Add timestamp and application ID to FormData
+            // Add timestamp and application ID
             const applicationId = 'AMT' + Date.now().toString().slice(-6) + Math.floor(Math.random() * 1000).toString().padStart(3, '0');
-            formData.append('applicationId', applicationId);
-            formData.append('timestamp', new Date().toLocaleString());
-            formData.append('fullPhone', formData.get('countryCode') + formData.get('phoneNumber'));
-            formData.append('source', 'popup-form'); // Track source
-
-            // Google Apps Script URL (same as main form)
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbzHeZALb_JCI58cJIjKpH-moJcioAGsbR0PWrvT1UvbB8hAKRFisYFXmKBTJyrjFuCG9A/exec';
             
-            // Submit to Google Sheets
-            fetch(scriptURL, {
+            // Prepare data for PHP backend
+            const submitData = {
+                formType: 'enquire',
+                course: formData.get('course') || 'General',
+                phone: formData.get('countryCode') + formData.get('phoneNumber'),
+                name: formData.get('firstName') + ' ' + formData.get('lastName'),
+                email: formData.get('email'),
+                consent: true
+            };
+
+            console.log('Popup form data:', submitData);
+            
+            // Submit to PHP backend
+            fetch('submit-form.php', {
                 method: 'POST',
-                body: formData
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(submitData)
             })
-            .then(response => response.text())
-            .then(responseText => {
-                console.log('Popup form response:', responseText);
+            .then(response => response.json())
+            .then(responseData => {
+                console.log('Popup form response:', responseData);
                 
-                let responseData;
-                try {
-                    responseData = JSON.parse(responseText);
-                } catch (e) {
-                    responseData = { status: 'success', message: 'Submitted successfully' };
-                }
-                
-                if (responseData.status === 'error') {
+                if (!responseData.success) {
                     throw new Error(responseData.message || 'Submission failed');
                 }
                 
@@ -3837,24 +3838,36 @@
             // Get form data
             const formData = new FormData(document.getElementById('brochureApplicationForm'));
             
-            // Add timestamp and application ID
+            // Add application ID
             const applicationId = 'BRO' + Date.now().toString().slice(-6) + Math.floor(Math.random() * 1000).toString().padStart(3, '0');
-            formData.append('applicationId', applicationId);
-            formData.append('timestamp', new Date().toLocaleString());
-            formData.append('fullPhone', formData.get('countryCode') + formData.get('phoneNumber'));
-            formData.append('source', 'brochure-download');
-
-            // Google Apps Script URL
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbzHeZALb_JCI58cJIjKpH-moJcioAGsbR0PWrvT1UvbB8hAKRFisYFXmKBTJyrjFuCG9A/exec';
             
-            // Submit to Google Sheets
-            fetch(scriptURL, {
+            // Prepare data for PHP backend
+            const submitData = {
+                formType: 'brochure',
+                course: formData.get('course'),
+                phone: formData.get('countryCode') + formData.get('phoneNumber'),
+                name: formData.get('firstName') + ' ' + formData.get('lastName'),
+                email: formData.get('email'),
+                consent: true
+            };
+
+            console.log('Brochure form data:', submitData);
+            
+            // Submit to PHP backend
+            fetch('submit-form.php', {
                 method: 'POST',
-                body: formData
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(submitData)
             })
-            .then(response => response.text())
-            .then(responseText => {
-                console.log('Brochure form response:', responseText);
+            .then(response => response.json())
+            .then(responseData => {
+                console.log('Brochure form response:', responseData);
+                
+                if (!responseData.success) {
+                    throw new Error(responseData.message || 'Submission failed');
+                }
                 
                 // Show success message (no redirect for brochure download)
                 successMessage.innerHTML = `

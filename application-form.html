@@ -1110,42 +1110,36 @@
             formData.append('timestamp', new Date().toLocaleString());
             formData.append('fullPhone', formData.get('countryCode') + formData.get('phoneNumber'));
 
-            // Debug: Log form data
-            console.log('Form Data being sent:');
-            for (let [key, value] of formData.entries()) {
-                console.log(key + ':', value);
-            }
+            // Prepare data for PHP backend
+            const submitData = {
+                formType: 'apply',
+                course: formData.get('course'),
+                phone: formData.get('fullPhone'),
+                name: formData.get('firstName') + ' ' + formData.get('lastName'),
+                email: formData.get('email'),
+                consent: true
+            };
 
-            // Replace with your Google Apps Script Web App URL
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbzHeZALb_JCI58cJIjKpH-moJcioAGsbR0PWrvT1UvbB8hAKRFisYFXmKBTJyrjFuCG9A/exec';
-            
-            // Send data to Google Sheets via Google Apps Script
-            fetch(scriptURL, {
+            // Debug: Log form data
+            console.log('Form Data being sent:', submitData);
+
+            // Submit to PHP backend
+            fetch('submit-form.php', {
                 method: 'POST',
-                body: formData // Send as FormData, not JSON
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(submitData)
             })
             .then(response => {
                 console.log('Response status:', response.status);
-                console.log('Response:', response);
-                
-                // Try to get the response text for debugging
-                return response.text();
+                return response.json();
             })
-            .then(responseText => {
-                console.log('Response text:', responseText);
-                
-                // Try to parse as JSON, but handle if it's not JSON
-                let responseData;
-                try {
-                    responseData = JSON.parse(responseText);
-                    console.log('Parsed response:', responseData);
-                } catch (e) {
-                    console.log('Response is not JSON:', responseText);
-                    responseData = { status: 'success', message: 'Submitted successfully' };
-                }
+            .then(responseData => {
+                console.log('Response:', responseData);
                 
                 // Check if the submission was successful
-                if (responseData.status === 'error') {
+                if (!responseData.success) {
                     throw new Error(responseData.message || 'Submission failed');
                 }
                 
