@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>404 - Page Not Found | Amity Online University</title>
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #1a237e 0%, #0d47a1 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            padding: 20px;
+        }
+
+        .error-container {
+            text-align: center;
+            max-width: 600px;
+        }
+
+        .error-code {
+            font-size: 150px;
+            font-weight: 700;
+            line-height: 1;
+            color: #FFC107;
+            text-shadow: 0 0 30px rgba(255, 193, 7, 0.3);
+            margin-bottom: 20px;
+        }
+
+        .error-title {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .error-message {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .error-icon {
+            font-size: 100px;
+            margin-bottom: 30px;
+            opacity: 0.7;
+        }
+
+        .btn-container {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 30px;
+            background-color: #FFC107;
+            color: #1a237e;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 193, 7, 0.3);
+        }
+
+        .btn:hover {
+            background-color: #FFD54F;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 193, 7, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .helpful-links {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .helpful-links h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .link-item {
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: #fff;
+            display: block;
+            backdrop-filter: blur(10px);
+        }
+
+        .link-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .link-item i {
+            font-size: 24px;
+            margin-bottom: 8px;
+            color: #FFC107;
+        }
+
+        @media (max-width: 768px) {
+            .error-code {
+                font-size: 100px;
+            }
+
+            .error-title {
+                font-size: 24px;
+            }
+
+            .error-message {
+                font-size: 16px;
+            }
+
+            .btn-container {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .links-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="error-icon">
+            <i class="fas fa-exclamation-triangle"></i>
+        </div>
+        
+        <div class="error-code">404</div>
+        
+        <h1 class="error-title">Oops! Page Not Found</h1>
+        
+        <p class="error-message">
+            The page you're looking for seems to have taken an unexpected detour. 
+            Don't worry, let's get you back on track to your educational journey!
+        </p>
+
+        <div class="btn-container">
+            <a href="index.html" class="btn">
+                <i class="fas fa-home"></i>
+                Go to Homepage
+            </a>
+            <a href="application-form.html" class="btn btn-secondary">
+                <i class="fas fa-file-alt"></i>
+                Apply Now
+            </a>
+        </div>
+
+        <div class="helpful-links">
+            <h3>Looking for something specific?</h3>
+            <div class="links-grid">
+                <a href="index.html#programs" class="link-item">
+                    <i class="fas fa-graduation-cap"></i>
+                    <div>Programs</div>
+                </a>
+                <a href="index.html#about" class="link-item">
+                    <i class="fas fa-info-circle"></i>
+                    <div>About Us</div>
+                </a>
+                <a href="index.html#contact" class="link-item">
+                    <i class="fas fa-phone"></i>
+                    <div>Contact</div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Log 404 error for analytics
+        if (window.fbq) {
+            fbq('trackCustom', '404Error', {
+                page: window.location.pathname
+            });
+        }
+    </script>
+</body>
+</html>

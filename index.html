@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Amity Online University offers accredited online degree programs in BBA, MBA, BCA, MCA, and more. India's leading online university with flexible learning, industry-recognized certifications, and career support.">
+    <meta name="keywords" content="Amity Online University, online degree, distance learning, MBA online, BBA online, BCA online, MCA online, online education India, UGC approved online courses">
+    <meta name="robots" content="index, follow">
     <title>Online Degree From Amity Online University - India's #1 Choice</title>
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -21,6 +24,7 @@
     fbq('init', '1365152001140855');
     fbq('track', 'PageView');
     </script>
+    <meta name="google-site-verification" content="cG1kzKEAVSgoomETO66M4Em6vH5ScRCv745bmtNfttc" />
     <noscript><img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=1365152001140855&ev=PageView&noscript=1"
     /></noscript>
@@ -2881,7 +2885,7 @@
                 <div class="contact-text">
                     <h2>Connect for any queries</h2>
                     <p>Amity Online University</p>
-                    <p style="margin-top: 15px;"><strong>Email:</strong> <a href="mailto:contact@amityonlineadmission.in" style="color: #FFC107; text-decoration: none;">contact@amityonlineadmission.in</a></p>
+                    <p style="margin-top: 15px;"><strong>Email:</strong> <a href="#" class="email-link" data-user="contact" data-domain="amityonlineadmission.in" style="color: #FFC107; text-decoration: none;"></a></p>
                     <a href="tel:+91-9266530366" class="btn btn-primary">Call Now</a>
                 </div>
                 <div class="contact-image">
@@ -2904,7 +2908,7 @@
                     <a href="#refund">Refund Policy</a>
                     <a href="#contact">Contact Us</a>
                     <span style="color: #666; margin: 0 10px;">|</span>
-                    <a href="mailto:contact@amityonlineadmission.in">contact@amityonlineadmission.in</a>
+                    <a href="#" class="email-link" data-user="contact" data-domain="amityonlineadmission.in"></a>
                 </div>
                 <div class="copyright">
                     <p>&copy; 2025 Amity Online University. All rights reserved.</p>
@@ -3982,6 +3986,20 @@
             
             return true;
         }
+
+        // Email obfuscation - decode emails on page load to protect from spam bots
+        document.addEventListener('DOMContentLoaded', function() {
+            const emailLinks = document.querySelectorAll('.email-link');
+            emailLinks.forEach(function(link) {
+                const user = link.getAttribute('data-user');
+                const domain = link.getAttribute('data-domain');
+                if (user && domain) {
+                    const email = user + '@' + domain;
+                    link.href = 'mailto:' + email;
+                    link.textContent = email;
+                }
+            });
+        });
     </script>
 </body>
 </html>

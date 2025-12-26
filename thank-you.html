@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Thank you for submitting your application to Amity Online University. Our admissions team will contact you shortly to guide you through the next steps.">
+    <meta name="keywords" content="Amity Online application submitted, admission confirmation, thank you page">
+    <meta name="robots" content="noindex, nofollow">
     <title>Thank You - Application Submitted | Amity Online University</title>
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -528,7 +531,7 @@
             <div class="contact-info">
                 <h4><i class="fas fa-phone" style="margin-right: 8px; color: #FFC107;"></i>Need Help?</h4>
                 <p><strong>Admissions Helpline:</strong> <a href="tel:+919266530366">+91 92665 30366</a></p>
-                <p><strong>Email:</strong> <a href="mailto:contact@amityonlineadmission.in">contact@amityonlineadmission.in</a></p>
+                <p><strong>Email:</strong> <a href="#" class="email-link" data-user="contact" data-domain="amityonlineadmission.in"></a></p>
                 <p><strong>Available:</strong> Monday to Friday, 9:00 AM to 7:00 PM</p>
             </div>
         </div>
@@ -538,7 +541,7 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <p>&copy; 2025 Amity Online University. All rights reserved. | Email: <a href="mailto:contact@amityonlineadmission.in" style="color: #FFC107; text-decoration: none;">contact@amityonlineadmission.in</a></p>
+                <p>&copy; 2025 Amity Online University. All rights reserved. | Email: <a href="#" class="email-link" data-user="contact" data-domain="amityonlineadmission.in" style="color: #FFC107; text-decoration: none;"></a></p>
             </div>
         </div>
     </footer>
@@ -753,6 +756,20 @@
 
         // Trigger confetti on page load
         window.addEventListener('load', createConfetti);
+
+        // Email obfuscation - decode emails on page load to protect from spam bots
+        document.addEventListener('DOMContentLoaded', function() {
+            const emailLinks = document.querySelectorAll('.email-link');
+            emailLinks.forEach(function(link) {
+                const user = link.getAttribute('data-user');
+                const domain = link.getAttribute('data-domain');
+                if (user && domain) {
+                    const email = user + '@' + domain;
+                    link.href = 'mailto:' + email;
+                    link.textContent = email;
+                }
+            });
+        });
     </script>
 </body>
 </html>

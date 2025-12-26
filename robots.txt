@@ -1,0 +1,14 @@
+# robots.txt for Amity Online University
+User-agent: *
+Allow: /
+
+# Disallow admin and private directories
+Disallow: /cgi-bin/
+Disallow: /config.php
+Disallow: /submit-form.php
+
+# Disallow thank you page from indexing
+Disallow: /thank-you.html
+
+# Sitemap location
+Sitemap: https://www.amityonlineadmission.in/sitemap.xml
