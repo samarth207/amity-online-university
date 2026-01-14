@@ -3,22 +3,20 @@ RewriteEngine On
 # Custom 404 Error Page
 ErrorDocument 404 /404.html
 
-# Rewrite blog URLs to PHP versions
-RewriteRule ^blog$ blog.php [L]
-RewriteRule ^blog-post$ blog-post.php [L,QSA]
+# Redirect .html URLs to extensionless versions
+RewriteCond %{THE_REQUEST} ^GET\ /[^?\s]+\.html
+RewriteRule ^(.*)\.html$ /$1 [R=301,L]
+
+# Remove trailing slash if corresponding .html file exists
+RewriteCond %{REQUEST_URI} !^/$
+RewriteCond %{REQUEST_URI} ^(.+)/$
+RewriteCond %{DOCUMENT_ROOT}%1.html -f
+RewriteRule ^(.+)/$ /$1 [R=301,L]
 
 # Remove .html extension from URLs
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}\.html -f
 RewriteRule ^(.*)$ $1.html [L]
-
-# Redirect .html URLs to extensionless versions
-RewriteCond %{THE_REQUEST} ^GET\ /[^?\s]+\.html
-RewriteRule ^(.*)\.html$ /$1 [R=301,L]
-
-# Remove trailing slash if not a directory
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)/$ /$1 [R=301,L]
 
 # Security Headers
 <IfModule mod_headers.c>

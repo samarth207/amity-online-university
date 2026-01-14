@@ -64,6 +64,7 @@
             width: auto;
             margin-right: 15px;
             border-radius: 4px;
+            object-fit: contain;
         }
 
         .nav-menu {
@@ -81,7 +82,29 @@
             transition: color 0.3s ease;
         }
 
-        .nav-menu li a:hover,
+        .nav-menu li a {
+            position: relative;
+        }
+
+        .nav-menu li a:hover {
+            color: #FFC107;
+        }
+
+        .nav-menu li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #FFC107;
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu li a:hover::after {
+            width: 100%;
+        }
+
         .nav-menu li a.active {
             color: #FFC107;
         }
@@ -130,6 +153,7 @@
 
         .mobile-menu ul {
             list-style: none;
+            padding: 0;
         }
 
         .mobile-menu li {
@@ -141,6 +165,8 @@
             text-decoration: none;
             font-weight: 500;
             font-size: 1.1rem;
+            display: block;
+            padding: 10px 0;
         }
 
         .mobile-menu a.active {
@@ -441,28 +467,33 @@
     <nav class="navbar">
         <div class="nav-container">
             <a href="index.html" class="nav-logo">
-                <img src="assets/images/amity-logo.png" alt="Amity Online University Logo">
+                <img src="assets/images/logo.png" alt="Amity Online University Logo" onerror="this.src='https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100&q=80'">
             </a>
+            
             <ul class="nav-menu">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="index.html#programs">Programs</a></li>
-                <li><a href="index.html#features">Features</a></li>
+                <li><a href="index.html#admissions">Admissions</a></li>
+                <li><a href="index.html#about">About</a></li>
                 <li><a href="blog.html" class="active">Blog</a></li>
                 <li><a href="index.html#contact">Contact</a></li>
-                <li><a href="application-form.html" class="nav-cta">Apply Now</a></li>
+                <li><a href="application-form" class="nav-cta">Apply Now</a></li>
             </ul>
+
             <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
+        
         <div class="mobile-menu" id="mobileMenu">
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="index.html#programs">Programs</a></li>
-                <li><a href="index.html#features">Features</a></li>
+                <li><a href="index.html#admissions">Admissions</a></li>
+                <li><a href="index.html#about">About</a></li>
                 <li><a href="blog.html" class="active">Blog</a></li>
                 <li><a href="index.html#contact">Contact</a></li>
-                <li><a href="application-form.html" class="nav-cta" style="display: inline-block; margin-top: 10px;">Apply Now</a></li>
+                <li><a href="application-form" class="nav-cta" style="display: inline-block; margin-top: 10px;">Apply Now</a></li>
             </ul>
         </div>
     </nav>
