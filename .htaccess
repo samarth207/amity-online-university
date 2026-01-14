@@ -3,6 +3,10 @@ RewriteEngine On
 # Custom 404 Error Page
 ErrorDocument 404 /404.html
 
+# Rewrite blog URLs to PHP versions
+RewriteRule ^blog$ blog.php [L]
+RewriteRule ^blog-post$ blog-post.php [L,QSA]
+
 # Remove .html extension from URLs
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}\.html -f
@@ -25,7 +29,7 @@ RewriteRule ^(.*)/$ /$1 [R=301,L]
 
 # Enable GZIP compression
 <IfModule mod_deflate.c>
-    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
 </IfModule>
 
 # Browser Caching
@@ -42,3 +46,31 @@ RewriteRule ^(.*)/$ /$1 [R=301,L]
 
 # Prevent directory browsing
 Options -Indexes
+
+# ==================== API DATA PROTECTION ====================
+# Deny direct access to data files in api/data directory
+<IfModule mod_rewrite.c>
+    RewriteRule ^api/data/.*$ - [F,L]
+</IfModule>
+
+# Block access to sensitive file types
+<FilesMatch "\.(json|log|sql|bak|env|ini)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
+# Protect specific data directory (fallback for older Apache)
+<Directory "api/data">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</Directory>

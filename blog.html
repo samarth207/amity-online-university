@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore insightful articles, tips, and news about online education, career guidance, and academic success at Amity Online University Blog.">
+    <meta name="keywords" content="Amity Online University Blog, online education articles, career tips, study guides, MBA insights, BBA tips">
+    <meta name="robots" content="index, follow">
+    <title>Blog - Amity Online University</title>
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            padding-top: 80px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1001;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #002147;
+        }
+
+        .nav-logo img {
+            height: 50px;
+            width: auto;
+            margin-right: 15px;
+            border-radius: 4px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+            align-items: center;
+        }
+
+        .nav-menu li a {
+            text-decoration: none;
+            color: #002147;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu li a:hover,
+        .nav-menu li a.active {
+            color: #FFC107;
+        }
+
+        .nav-cta {
+            background: #FFC107;
+            color: #002147;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255, 193, 7, 0.4);
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #002147;
+            cursor: pointer;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+        }
+
+        .mobile-menu li {
+            margin: 15px 0;
+        }
+
+        .mobile-menu a {
+            color: #002147;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        .mobile-menu a.active {
+            color: #FFC107;
+        }
+
+        /* Hero Section */
+        .blog-hero {
+            background: linear-gradient(135deg, #002147 0%, #003366 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .blog-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .blog-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Blog Grid */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .blog-content {
+            padding: 25px;
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .blog-category {
+            background: #FFC107;
+            color: #002147;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .blog-date {
+            color: #666;
+            font-size: 0.85rem;
+        }
+
+        .blog-date i {
+            margin-right: 5px;
+        }
+
+        .blog-content h3 {
+            color: #002147;
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .blog-content p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .blog-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 1px solid #e9ecef;
+        }
+
+        .blog-author {
+            color: #666;
+            font-size: 0.85rem;
+        }
+
+        .blog-author i {
+            margin-right: 5px;
+        }
+
+        .read-more {
+            color: #002147;
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .read-more:hover {
+            color: #FFC107;
+        }
+
+        .read-more i {
+            margin-left: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        .read-more:hover i {
+            transform: translateX(5px);
+        }
+
+        .no-blogs {
+            text-align: center;
+            padding: 80px 20px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .no-blogs i {
+            font-size: 4rem;
+            color: #e9ecef;
+            margin-bottom: 20px;
+        }
+
+        .no-blogs h2 {
+            color: #002147;
+            margin-bottom: 10px;
+        }
+
+        .no-blogs p {
+            color: #666;
+        }
+
+        /* Loading State */
+        .loading-state {
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid #e9ecef;
+            border-top: 4px solid #002147;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading-state p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        /* Error State */
+        .error-state {
+            text-align: center;
+            padding: 80px 20px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .error-state i {
+            font-size: 4rem;
+            color: #dc3545;
+            margin-bottom: 20px;
+        }
+
+        .error-state h2 {
+            color: #002147;
+            margin-bottom: 10px;
+        }
+
+        .error-state p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .retry-btn {
+            background: #002147;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .retry-btn:hover {
+            background: #003366;
+        }
+
+        /* Footer */
+        .footer {
+            background: white;
+            padding: 40px 0 20px;
+            border-top: 1px solid #e9ecef;
+        }
+
+        .footer-content {
+            text-align: center;
+        }
+
+        .footer-links {
+            margin-bottom: 20px;
+        }
+
+        .footer-links a {
+            color: #666;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 0.9rem;
+        }
+
+        .footer-links a:hover {
+            color: #002147;
+        }
+
+        .disclaimer {
+            color: #888;
+            font-size: 0.8rem;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .copyright {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .blog-hero h1 {
+                font-size: 2rem;
+            }
+
+            .blog-hero p {
+                font-size: 1rem;
+            }
+
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="assets/images/amity-logo.png" alt="Amity Online University Logo">
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#programs">Programs</a></li>
+                <li><a href="index.html#features">Features</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="application-form.html" class="nav-cta">Apply Now</a></li>
+            </ul>
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#programs">Programs</a></li>
+                <li><a href="index.html#features">Features</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="application-form.html" class="nav-cta" style="display: inline-block; margin-top: 10px;">Apply Now</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="blog-hero">
+        <div class="container">
+            <h1>Our Blog</h1>
+            <p>Insights, tips, and news about online education and career success</p>
+        </div>
+    </div>
+
+    <!-- Blog Grid -->
+    <div class="container">
+        <!-- Loading State -->
+        <div class="loading-state" id="loadingState">
+            <div class="loading-spinner"></div>
+            <p>Loading articles...</p>
+        </div>
+
+        <!-- Error State -->
+        <div class="error-state" id="errorState" style="display: none;">
+            <i class="fas fa-exclamation-triangle"></i>
+            <h2>Unable to Load Blogs</h2>
+            <p>Unable to connect to the blog server. Please try again later.</p>
+            <button onclick="loadBlogs()" class="retry-btn">Try Again</button>
+        </div>
+
+        <!-- Blog Grid -->
+        <div class="blog-grid" id="blogGrid" style="display: none;"></div>
+
+        <!-- No Blogs State -->
+        <div class="no-blogs" id="noBlogsState" style="display: none;">
+            <i class="fas fa-newspaper"></i>
+            <h2>No Articles Yet</h2>
+            <p>Check back soon for new content!</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="disclaimer">
+                    <p><strong>Disclaimer:</strong> All information provided is subject to change. Please verify details with the university. Amity Online University is committed to providing quality education and career opportunities.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html#privacy">Privacy Policy</a>
+                    <a href="index.html#terms">Terms & Conditions</a>
+                    <a href="index.html#refund">Refund Policy</a>
+                    <a href="index.html#contact">Contact Us</a>
+                </div>
+                <div class="copyright">
+                    <p>&copy; 2025 Amity Online University. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Strapi API Configuration
+        const STRAPI_URL = 'https://generous-reward-1f94c1ab0c.strapiapp.com';
+        const API_URL = `${STRAPI_URL}/api/blogs`;
+
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('active');
+        }
+
+        // Format date for display
+        function formatDate(dateString) {
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return new Date(dateString).toLocaleDateString('en-US', options);
+        }
+
+        // Strip HTML tags for excerpt
+        function stripHtml(html) {
+            const tmp = document.createElement('div');
+            tmp.innerHTML = html;
+            return tmp.textContent || tmp.innerText || '';
+        }
+
+        // Get image URL from Strapi
+        function getImageUrl(blog) {
+            // Check for image in different possible locations based on Strapi structure
+            if (blog.attributes?.image?.data?.attributes?.url) {
+                const url = blog.attributes.image.data.attributes.url;
+                return url.startsWith('http') ? url : `${STRAPI_URL}${url}`;
+            }
+            if (blog.image?.url) {
+                return blog.image.url.startsWith('http') ? blog.image.url : `${STRAPI_URL}${blog.image.url}`;
+            }
+            // Default fallback image
+            return 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80';
+        }
+
+        // Render blog card
+        function renderBlogCard(blog) {
+            const attrs = blog.attributes || blog;
+            const id = blog.id;
+            const title = attrs.title || 'Untitled';
+            const content = attrs.content || attrs.description || '';
+            // Use excerpt from Strapi if available, otherwise fallback to content
+            const excerpt = attrs.excerpt || attrs.summary || stripHtml(content).substring(0, 150) + '...';
+            const category = attrs.category || 'General';
+            const author = attrs.author || 'Amity Team';
+            const date = attrs.publishedAt || attrs.createdAt || new Date().toISOString();
+            const slug = attrs.slug || id;
+            const imageUrl = getImageUrl(blog);
+
+            return `
+                <article class="blog-card">
+                    <img src="${imageUrl}" 
+                         alt="${title}" 
+                         class="blog-image"
+                         onerror="this.src='https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'">
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-category">${category}</span>
+                            <span class="blog-date"><i class="far fa-calendar"></i> ${formatDate(date)}</span>
+                        </div>
+                        <h3>${title}</h3>
+                        <p>${excerpt}</p>
+                        <div class="blog-footer">
+                            <span class="blog-author">
+                                <i class="far fa-user"></i> ${author}
+                            </span>
+                            <a href="blog-post.html?id=${id}" class="read-more">
+                                Read More <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            `;
+        }
+
+        // Show/hide states
+        function showLoading() {
+            document.getElementById('loadingState').style.display = 'block';
+            document.getElementById('errorState').style.display = 'none';
+            document.getElementById('blogGrid').style.display = 'none';
+            document.getElementById('noBlogsState').style.display = 'none';
+        }
+
+        function showError() {
+            document.getElementById('loadingState').style.display = 'none';
+            document.getElementById('errorState').style.display = 'block';
+            document.getElementById('blogGrid').style.display = 'none';
+            document.getElementById('noBlogsState').style.display = 'none';
+        }
+
+        function showBlogs(blogs) {
+            document.getElementById('loadingState').style.display = 'none';
+            document.getElementById('errorState').style.display = 'none';
+            
+            if (blogs.length === 0) {
+                document.getElementById('blogGrid').style.display = 'none';
+                document.getElementById('noBlogsState').style.display = 'block';
+            } else {
+                document.getElementById('blogGrid').style.display = 'grid';
+                document.getElementById('noBlogsState').style.display = 'none';
+                document.getElementById('blogGrid').innerHTML = blogs.map(renderBlogCard).join('');
+            }
+        }
+
+        // Fetch blogs from Strapi
+        async function loadBlogs() {
+            showLoading();
+            
+            try {
+                const response = await fetch(`${API_URL}?populate=*&sort=publishedAt:desc`);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                const blogs = data.data || [];
+                
+                showBlogs(blogs);
+            } catch (error) {
+                console.error('Error fetching blogs:', error);
+                showError();
+            }
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', loadBlogs);
+    </script>
+</body>
+</html>

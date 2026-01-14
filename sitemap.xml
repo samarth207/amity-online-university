@@ -27,5 +27,13 @@
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
+    
+    <!-- Blog Pages -->
+    <url>
+        <loc>https://www.amityonlineadmission.in/blog.php</loc>
+        <lastmod>2026-01-05</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
 
 </urlset>
