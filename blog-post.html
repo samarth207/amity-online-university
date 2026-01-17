@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index, follow">
     <title>Blog Post - Amity Online University</title>
-    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <link rel="icon" type="image/png" href="/assets/images/favicon.png">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Marked.js for Markdown parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -304,6 +306,7 @@
             max-width: 100%;
             border-radius: 12px;
             margin: 25px 0;
+            display: block;
         }
 
         .article-body a {
@@ -313,6 +316,86 @@
 
         .article-body a:hover {
             color: #FFC107;
+        }
+
+        /* Additional Markdown styling */
+        .article-body strong, .article-body b {
+            font-weight: 700;
+            color: #002147;
+        }
+
+        .article-body em, .article-body i {
+            font-style: italic;
+        }
+
+        .article-body code {
+            background: #f1f3f5;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.9em;
+            color: #d63384;
+        }
+
+        .article-body pre {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 25px 0;
+        }
+
+        .article-body pre code {
+            background: transparent;
+            color: inherit;
+            padding: 0;
+        }
+
+        .article-body hr {
+            border: none;
+            border-top: 2px solid #e9ecef;
+            margin: 35px 0;
+        }
+
+        .article-body table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+        }
+
+        .article-body th, .article-body td {
+            border: 1px solid #dee2e6;
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        .article-body th {
+            background: #002147;
+            color: white;
+            font-weight: 600;
+        }
+
+        .article-body tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .article-body h4 {
+            font-size: 1.2rem;
+            color: #002147;
+            margin: 25px 0 10px;
+        }
+
+        .article-body h5 {
+            font-size: 1.1rem;
+            color: #002147;
+            margin: 20px 0 10px;
+        }
+
+        .article-body h6 {
+            font-size: 1rem;
+            color: #002147;
+            margin: 18px 0 8px;
         }
 
         /* Share Section */
@@ -589,7 +672,7 @@
     <nav class="navbar">
         <div class="nav-container">
             <a href="index.html" class="nav-logo">
-                <img src="assets/images/logo.png" alt="Amity Online University Logo" onerror="this.src='https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100&q=80'">
+                <img src="/assets/images/logo.png" alt="Amity Online University Logo" >
             </a>
             
             <ul class="nav-menu">
@@ -609,13 +692,13 @@
         
         <div class="mobile-menu" id="mobileMenu">
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="index.html#programs">Programs</a></li>
-                <li><a href="index.html#admissions">Admissions</a></li>
-                <li><a href="index.html#about">About</a></li>
-                <li><a href="blog.html" class="active">Blog</a></li>
-                <li><a href="index.html#contact">Contact</a></li>
-                <li><a href="application-form" class="nav-cta" style="display: inline-block; margin-top: 10px;">Apply Now</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/#programs">Programs</a></li>
+                <li><a href="/#admissions">Admissions</a></li>
+                <li><a href="/#about">About</a></li>
+                <li><a href="/blog" class="active">Blog</a></li>
+                <li><a href="/#contact">Contact</a></li>
+                <li><a href="/application-form" class="nav-cta" style="display: inline-block; margin-top: 10px;">Apply Now</a></li>
             </ul>
         </div>
     </nav>
@@ -624,14 +707,14 @@
     <div class="container">
         <!-- Breadcrumb -->
         <div class="breadcrumb">
-            <a href="index.html">Home</a>
+            <a href="/">Home</a>
             <span>/</span>
-            <a href="blog.html">Blog</a>
+            <a href="/blog">Blog</a>
             <span>/</span>
             <span class="current" id="breadcrumbTitle">Loading...</span>
         </div>
 
-        <a href="blog.html" class="back-btn">
+        <a href="/blog" class="back-btn">
             <i class="fas fa-arrow-left"></i> Back to Blog
         </a>
 
@@ -649,13 +732,13 @@
                     <p><strong>Disclaimer:</strong> All information provided is subject to change. Please verify details with the university. Amity Online University is committed to providing quality education and career opportunities.</p>
                 </div>
                 <div class="footer-links">
-                    <a href="index.html#privacy">Privacy Policy</a>
-                    <a href="index.html#terms">Terms & Conditions</a>
-                    <a href="index.html#refund">Refund Policy</a>
-                    <a href="index.html#contact">Contact Us</a>
+                    <a href="/#privacy">Privacy Policy</a>
+                    <a href="/#terms">Terms & Conditions</a>
+                    <a href="/#refund">Refund Policy</a>
+                    <a href="/#contact">Contact Us</a>
                 </div>
                 <div class="copyright">
-                    <p>&copy; 2025 Amity Online University. All rights reserved.</p>
+                    <p>&copy; 2026 Amity Online University. All rights reserved.</p>
                 </div>
             </div>
         </div>
@@ -675,31 +758,41 @@
             return name.split(' ').map(n => n[0]).join('').toUpperCase();
         }
 
-        // Get image URL from Strapi
+        // Get image URL from Strapi featuredImage
         function getImageUrl(blog, size = 'large') {
             const attrs = blog.attributes || blog;
             
-            // Check for image in different possible locations based on Strapi structure
+            // Check for featuredImage in Strapi structure
+            if (attrs.featuredImage?.data?.attributes?.url) {
+                // Try to get the requested size format first
+                if (size && attrs.featuredImage.data.attributes.formats?.[size]?.url) {
+                    const url = attrs.featuredImage.data.attributes.formats[size].url;
+                    return url.startsWith('http') ? url : `${STRAPI_URL}${url}`;
+                }
+                // Fallback to original image
+                const url = attrs.featuredImage.data.attributes.url;
+                return url.startsWith('http') ? url : `${STRAPI_URL}${url}`;
+            }
+            // Fallback to image field if featuredImage not available
             if (attrs.image?.data?.attributes?.url) {
                 const url = attrs.image.data.attributes.url;
                 return url.startsWith('http') ? url : `${STRAPI_URL}${url}`;
-            }
-            if (attrs.image?.url) {
-                return attrs.image.url.startsWith('http') ? attrs.image.url : `${STRAPI_URL}${attrs.image.url}`;
             }
             // Default fallback image
             return 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80';
         }
 
-        // Fetch single blog from Strapi
-        async function fetchBlog(id) {
+        // Fetch single blog from Strapi by slug
+        async function fetchBlog(slug) {
             try {
-                const response = await fetch(`${API_URL}/${id}?populate=*`);
+                // Fetch by slug using filter
+                const response = await fetch(`${API_URL}?filters[slug][$eq]=${encodeURIComponent(slug)}&populate=featuredImage`);
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
                 const data = await response.json();
-                return data.data;
+                // Return first matching blog
+                return data.data && data.data.length > 0 ? data.data[0] : null;
             } catch (error) {
                 console.error('Error fetching blog:', error);
                 return null;
@@ -714,7 +807,7 @@
                 const currentId = currentBlog.id;
 
                 // Fetch blogs with same category, excluding current blog
-                let url = `${API_URL}?populate=*&pagination[limit]=3&filters[id][$ne]=${currentId}`;
+                let url = `${API_URL}?populate=featuredImage&pagination[limit]=3&filters[id][$ne]=${currentId}&fields[0]=title&fields[1]=slug&fields[2]=excerpt&fields[3]=category&fields[4]=author&fields[5]=publishedAt`;
                 
                 if (category) {
                     url += `&filters[category][$eq]=${encodeURIComponent(category)}`;
@@ -730,7 +823,7 @@
 
                 // If not enough blogs from same category, fetch more
                 if (relatedBlogs.length < 3) {
-                    const moreUrl = `${API_URL}?populate=*&pagination[limit]=${3 - relatedBlogs.length}&filters[id][$ne]=${currentId}`;
+                    const moreUrl = `${API_URL}?populate=featuredImage&pagination[limit]=${3 - relatedBlogs.length}&filters[id][$ne]=${currentId}&fields[0]=title&fields[1]=slug&fields[2]=excerpt&fields[3]=category&fields[4]=author&fields[5]=publishedAt`;
                     const moreResponse = await fetch(moreUrl);
                     if (moreResponse.ok) {
                         const moreData = await moreResponse.json();
@@ -748,10 +841,17 @@
         }
 
         async function loadArticle() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const blogId = urlParams.get('id');
+            // Get slug from URL path (e.g., /blog/my-slug)
+            const pathParts = window.location.pathname.split('/');
+            let slug = pathParts[pathParts.length - 1];
             
-            if (!blogId) {
+            // Fallback to query param for backward compatibility
+            if (!slug || slug === 'blog-post' || slug === 'blog-post.html') {
+                const urlParams = new URLSearchParams(window.location.search);
+                slug = urlParams.get('slug') || urlParams.get('id');
+            }
+            
+            if (!slug) {
                 showNotFound();
                 return;
             }
@@ -765,7 +865,7 @@
                 <style>@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }</style>
             `;
 
-            const blog = await fetchBlog(blogId);
+            const blog = await fetchBlog(slug);
             
             if (!blog) {
                 showNotFound();
@@ -774,7 +874,9 @@
 
             const attrs = blog.attributes || blog;
             const title = attrs.title || 'Untitled';
-            const content = attrs.content || '';
+            const rawContent = attrs.content || '';
+            // Parse Markdown content to HTML using marked.js
+            const content = typeof marked !== 'undefined' ? marked.parse(rawContent) : rawContent;
             const category = attrs.category || 'General';
             const author = attrs.author || 'Amity Team';
             const readTime = attrs.readTime || '5';
@@ -850,10 +952,11 @@
                             ${relatedPosts.map(post => {
                                 const postAttrs = post.attributes || post;
                                 const postTitle = postAttrs.title || 'Untitled';
+                                const postSlug = postAttrs.slug || post.id;
                                 const postDate = postAttrs.publishedAt || postAttrs.createdAt || new Date().toISOString();
                                 const postImage = getImageUrl(post);
                                 return `
-                                    <div class="related-post" onclick="window.location.href='blog-post.html?id=${post.id}'">
+                                    <div class="related-post" onclick="window.location.href='/blog/${postSlug}'">
                                         <img src="${postImage}" 
                                              alt="${postTitle}"
                                              onerror="this.src='https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80'">
@@ -885,7 +988,7 @@
                     <i class="fas fa-file-alt"></i>
                     <h2>Article Not Found</h2>
                     <p>The article you're looking for doesn't exist or has been removed.</p>
-                    <a href="blog.html">Browse All Articles</a>
+                    <a href="/blog">Browse All Articles</a>
                 </div>
             `;
         }

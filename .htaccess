@@ -3,19 +3,27 @@ RewriteEngine On
 # Custom 404 Error Page
 ErrorDocument 404 /404.html
 
+# Prevent directory slash for specific pages
+DirectorySlash Off
+
 # Redirect .html URLs to extensionless versions
-RewriteCond %{THE_REQUEST} ^GET\ /[^?\s]+\.html
-RewriteRule ^(.*)\.html$ /$1 [R=301,L]
+RewriteCond %{THE_REQUEST} \s/([^.]+)\.html[\s?]
+RewriteRule ^ /%1 [R=301,L]
 
-# Remove trailing slash if corresponding .html file exists
-RewriteCond %{REQUEST_URI} !^/$
-RewriteCond %{REQUEST_URI} ^(.+)/$
-RewriteCond %{DOCUMENT_ROOT}%1.html -f
-RewriteRule ^(.+)/$ /$1 [R=301,L]
-
-# Remove .html extension from URLs
+# Remove trailing slash (except root)
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteCond %{REQUEST_URI} (.+)/$
+RewriteRule ^ %1 [R=301,L]
+
+# Rewrite /blog/slug to blog-post.html (slug will be parsed by JavaScript)
+# Must come before extensionless URL rule
+RewriteCond %{REQUEST_URI} ^/blog/[^/]+$
+RewriteRule ^blog/(.+)$ /blog-post.html [L]
+
+# Serve .html file for extensionless URLs
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
 RewriteRule ^(.*)$ $1.html [L]
 
 # Security Headers

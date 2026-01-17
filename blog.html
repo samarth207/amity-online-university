@@ -547,7 +547,7 @@
                     <a href="index.html#contact">Contact Us</a>
                 </div>
                 <div class="copyright">
-                    <p>&copy; 2025 Amity Online University. All rights reserved.</p>
+                    <p>&copy; 2026 Amity Online University. All rights reserved.</p>
                 </div>
             </div>
         </div>
@@ -576,15 +576,24 @@
             return tmp.textContent || tmp.innerText || '';
         }
 
-        // Get image URL from Strapi
+        // Get image URL from Strapi featuredImage
         function getImageUrl(blog) {
-            // Check for image in different possible locations based on Strapi structure
-            if (blog.attributes?.image?.data?.attributes?.url) {
-                const url = blog.attributes.image.data.attributes.url;
+            const attrs = blog.attributes || blog;
+            
+            // Check for featuredImage in Strapi structure
+            if (attrs.featuredImage?.data?.attributes?.url) {
+                const url = attrs.featuredImage.data.attributes.url;
                 return url.startsWith('http') ? url : `${STRAPI_URL}${url}`;
             }
-            if (blog.image?.url) {
-                return blog.image.url.startsWith('http') ? blog.image.url : `${STRAPI_URL}${blog.image.url}`;
+            // Check formats for optimized images
+            if (attrs.featuredImage?.data?.attributes?.formats?.medium?.url) {
+                const url = attrs.featuredImage.data.attributes.formats.medium.url;
+                return url.startsWith('http') ? url : `${STRAPI_URL}${url}`;
+            }
+            // Fallback to image field if featuredImage not available
+            if (attrs.image?.data?.attributes?.url) {
+                const url = attrs.image.data.attributes.url;
+                return url.startsWith('http') ? url : `${STRAPI_URL}${url}`;
             }
             // Default fallback image
             return 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80';
@@ -621,7 +630,7 @@
                             <span class="blog-author">
                                 <i class="far fa-user"></i> ${author}
                             </span>
-                            <a href="blog-post.html?id=${id}" class="read-more">
+                            <a href="blog/${slug}" class="read-more">
                                 Read More <i class="fas fa-arrow-right"></i>
                             </a>
                         </div>
@@ -664,7 +673,8 @@
             showLoading();
             
             try {
-                const response = await fetch(`${API_URL}?populate=*&sort=publishedAt:desc`);
+                // Only populate featuredImage and fetch needed fields for faster loading
+                const response = await fetch(`${API_URL}?populate=featuredImage&sort=publishedAt:desc&fields[0]=title&fields[1]=slug&fields[2]=excerpt&fields[3]=category&fields[4]=author&fields[5]=publishedAt&fields[6]=createdAt`);
                 
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
