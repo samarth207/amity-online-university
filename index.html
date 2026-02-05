@@ -3999,6 +3999,23 @@
 
         // Email obfuscation - decode emails on page load to protect from spam bots
         document.addEventListener('DOMContentLoaded', function() {
+            // Check if we need to scroll to a specific section
+            const scrollToSection = sessionStorage.getItem('scrollToSection');
+            if (scrollToSection) {
+                sessionStorage.removeItem('scrollToSection');
+                setTimeout(() => {
+                    const targetElement = document.getElementById(scrollToSection);
+                    if (targetElement) {
+                        const navbarHeight = document.querySelector('.navbar').offsetHeight;
+                        const targetPosition = targetElement.offsetTop - navbarHeight;
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                }, 100);
+            }
+
             const emailLinks = document.querySelectorAll('.email-link');
             emailLinks.forEach(function(link) {
                 const user = link.getAttribute('data-user');

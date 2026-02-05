@@ -30,10 +30,50 @@
     
     <!-- Blog Pages -->
     <url>
-        <loc>https://www.amityonlineadmission.in/blog.php</loc>
-        <lastmod>2026-01-05</lastmod>
-        <changefreq>daily</changefreq>
+        <loc>https://www.amityonlineadmission.in/blog.html</loc>
+        <lastmod>2026-01-21</lastmod>
+        <changefreq>weekly</changefreq>
         <priority>0.8</priority>
+    </url>
+    
+    <!-- Blog Post: Online MBA for Working Professionals -->
+    <url>
+        <loc>https://www.amityonlineadmission.in/blog/online-mba-for-working-professionals-in-india</loc>
+        <lastmod>2026-01-21</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- Blog Post: Why Choose Amity Online MBA -->
+    <url>
+        <loc>https://www.amityonlineadmission.in/blog/why-choose-amity-online-mba</loc>
+        <lastmod>2026-01-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- Blog Post: Amity Online MBA Fees vs Regular MBA -->
+    <url>
+        <loc>https://www.amityonlineadmission.in/blog/amity-university-online-mba-fees-vs-regular-mba-which-one-is-worth-it-in-2026</loc>
+        <lastmod>2026-01-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- Blog Post: Amity vs IGNOU MBA Comparison -->
+    <url>
+        <loc>https://www.amityonlineadmission.in/blog/why-choose-amity-online-mba-over-ignou-mba-complete-comparison-for-2026</loc>
+        <lastmod>2026-01-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- Blog Post: MBA Scholarship India -->
+    <url>
+        <loc>https://www.amityonlineadmission.in/blog/mba-scholarship-india-apply-now</loc>
+        <lastmod>2026-01-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
     </url>
 
 </urlset>

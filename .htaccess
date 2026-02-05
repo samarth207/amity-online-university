@@ -1,5 +1,6 @@
 RewriteEngine On
 
+
 # Custom 404 Error Page
 ErrorDocument 404 /404.html
 
@@ -10,15 +11,14 @@ DirectorySlash Off
 RewriteCond %{THE_REQUEST} \s/([^.]+)\.html[\s?]
 RewriteRule ^ /%1 [R=301,L]
 
-# Remove trailing slash (except root)
+# direct /blog/ directory to /blog.html
+RewriteCond %{REQUEST_URI} ^/blog/?$
+RewriteRule ^blog/?$ /blog.html [L]
+
+# ReRemove trailing slash (except root)
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_URI} (.+)/$
 RewriteRule ^ %1 [R=301,L]
-
-# Rewrite /blog/slug to blog-post.html (slug will be parsed by JavaScript)
-# Must come before extensionless URL rule
-RewriteCond %{REQUEST_URI} ^/blog/[^/]+$
-RewriteRule ^blog/(.+)$ /blog-post.html [L]
 
 # Serve .html file for extensionless URLs
 RewriteCond %{REQUEST_FILENAME} !-f
