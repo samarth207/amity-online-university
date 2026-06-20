@@ -11,9 +11,10 @@ DirectorySlash Off
 RewriteCond %{THE_REQUEST} \s/([^.]+)\.html[\s?]
 RewriteRule ^ /%1 [R=301,L]
 
-# direct /blog/ directory to /blog.html
+# Dynamic blog routes
+RewriteRule ^blog/([a-z0-9-]+)/?$ /blog-post.php?slug=$1 [L,QSA,NC]
 RewriteCond %{REQUEST_URI} ^/blog/?$
-RewriteRule ^blog/?$ /blog.html [L]
+RewriteRule ^blog/?$ /blog.php [L]
 
 # ReRemove trailing slash (except root)
 RewriteCond %{REQUEST_FILENAME} !-d

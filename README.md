@@ -15,6 +15,18 @@ A complete responsive education landing page website for Amity Online University
 
 **Website:** [https://amityonlineadmission.in](https://amityonlineadmission.in)
 
+## 📝 Blog CMS (New)
+
+This project now includes a PHP-based blog CMS with:
+
+- Admin login (`/admin/login.php`)
+- SEO-first blog editor (meta title/description, focus keyword, slug, alt text)
+- Rich content editor (H2/H3/H4, links, image, table, FAQ)
+- Publish workflow (Draft, Pending, Published, Scheduled)
+- Automatic blog listing and detail pages (`/blog`, `/blog/{slug}`)
+
+Setup guide: see `CMS_SETUP.md`.
+
 ## 📱 Pages
 
 1. **Home Page** (`index.html`)
